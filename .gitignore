@@ -14,3 +14,16 @@ export_credentials.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+# Build folders
+bin/
+obj/
+
+# Visual Studio cache directory
+.vs/
+FileContentIndex/
+
+# VS Code
+.vscode/
+
+/android/
