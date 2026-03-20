@@ -1,0 +1,9 @@
+[gd_resource type="Theme" format=3 uid="uid://bph4sb36tfyd7"]
+
+[ext_resource type="FontFile" uid="uid://p3tgg60tp8c3" path="res://ui/justicehalf.ttf" id="1_wwywy"]
+
+[resource]
+default_font = ExtResource("1_wwywy")
+PopupMenu/constants/v_separation = 60
+PopupMenu/font_sizes/font_size = 48
+PopupMenu/font_sizes/title_font_size = 48

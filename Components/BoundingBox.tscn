@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dif5cssrkirjy"]
+
+[ext_resource type="Script" uid="uid://cwumt6ew6hxrf" path="res://Scripts/bounding_box.gd" id="1_f4o4f"]
+
+[node name="BoundingBox" type="Node3D" unique_id=511479372]
+script = ExtResource("1_f4o4f")

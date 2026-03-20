@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://b6fepxb7uq0f3"]
+
+[ext_resource type="Theme" uid="uid://bph4sb36tfyd7" path="res://Menu themes.tres" id="1_ikvlb"]
+[ext_resource type="Script" uid="uid://cfmrk8s7uiig3" path="res://Scripts/settings.gd" id="2_u3vo4"]
+[ext_resource type="Script" uid="uid://bs53rmebwb8wk" path="res://Scripts/resolution_picker.gd" id="3_far6c"]
+
+[node name="SettingsMenu" type="VBoxContainer" unique_id=914868135]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 80.0
+offset_top = -150.0
+offset_right = 400.0
+offset_bottom = 350.0
+grow_vertical = 2
+theme = ExtResource("1_ikvlb")
+theme_override_constants/separation = 16
+script = ExtResource("2_u3vo4")
+
+[node name="Fullscreen" type="CheckButton" parent="." unique_id=1177037536]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "Fullscreen"
+
+[node name="ResolutionPicker" type="MenuButton" parent="." unique_id=1025306870]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "Resolution"
+script = ExtResource("3_far6c")
+
+[node name="Label" type="Label" parent="." unique_id=1084047747]
+custom_minimum_size = Vector2(484, 55)
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "Main Volume"
+horizontal_alignment = 1
+
+[node name="MainVolSlider" type="HSlider" parent="." unique_id=614352196]
+layout_mode = 2
+max_value = 1.0
+step = 0.0
+
+[node name="Label2" type="Label" parent="." unique_id=1669173805]
+custom_minimum_size = Vector2(484, 55)
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "Music Volume"
+horizontal_alignment = 1
+
+[node name="MusicVolSlider" type="HSlider" parent="." unique_id=129521898]
+layout_mode = 2
+max_value = 1.0
+step = 0.0
+
+[node name="Label3" type="Label" parent="." unique_id=109279738]
+custom_minimum_size = Vector2(484, 55)
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "SFX Volume"
+horizontal_alignment = 1
+
+[node name="SfxVolSlider" type="HSlider" parent="." unique_id=1680926756]
+layout_mode = 2
+max_value = 1.0
+step = 0.0
+
+[node name="Back" type="Button" parent="." unique_id=169161856]
+layout_mode = 2
+theme_override_font_sizes/font_size = 52
+text = "Back"
+
+[connection signal="toggled" from="Fullscreen" to="." method="_on_fullscreen_toggled"]
+[connection signal="value_changed" from="MainVolSlider" to="." method="_on_main_vol_slider_value_changed"]
+[connection signal="value_changed" from="MusicVolSlider" to="." method="_on_music_vol_slider_value_changed"]
+[connection signal="value_changed" from="SfxVolSlider" to="." method="_on_sfx_vol_slider_value_changed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

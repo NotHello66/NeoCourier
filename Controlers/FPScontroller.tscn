@@ -1,0 +1,293 @@
+[gd_scene format=3 uid="uid://u62kfxsfw8kx"]
+
+[ext_resource type="Script" uid="uid://bjohqenyteyy" path="res://Controlers/FpScontroller.cs" id="1_tx4ao"]
+[ext_resource type="Texture2D" uid="uid://dtc2rlkdy6pue" path="res://ui/neo courier crosshair.png" id="3_e3rli"]
+[ext_resource type="FontFile" uid="uid://ct4xw6byu864k" path="res://ui/justiceital.ttf" id="3_ru13i"]
+[ext_resource type="Script" uid="uid://u1gcqqn4dkb1" path="res://Controlers/MusicManager.cs" id="3_vnsyr"]
+[ext_resource type="Script" uid="uid://dag87gj0n8bo2" path="res://Controlers/Speedometer.cs" id="4_md0me"]
+[ext_resource type="Texture2D" uid="uid://dftbsjkbqhllj" path="res://ui/compass mk2.png" id="4_u4bb4"]
+[ext_resource type="AudioStream" uid="uid://iqmsm4gv8am3" path="res://Music/06 Dust.mp3" id="4_vlbih"]
+[ext_resource type="AudioStream" uid="uid://bwhkwrklxyaam" path="res://Music/17 New Wave Hookers.mp3" id="5_e3rli"]
+[ext_resource type="Script" uid="uid://tug2b4fmr5ar" path="res://ui/Compass.cs" id="5_rl02r"]
+[ext_resource type="Script" uid="uid://bbm8rqd6pm5c" path="res://Controlers/pause_menu.gd" id="6_iaqqc"]
+[ext_resource type="Script" uid="uid://y40airu3evwq" path="res://Controlers/timer_label.gd" id="6_jn4fx"]
+[ext_resource type="AudioStream" uid="uid://d0ovvfk3st7rl" path="res://Music/23 Sexualizer (Feat. Flash Arnold).mp3" id="6_md0me"]
+[ext_resource type="FontFile" uid="uid://p3tgg60tp8c3" path="res://ui/justicehalf.ttf" id="7_4812h"]
+[ext_resource type="PackedScene" uid="uid://b6fepxb7uq0f3" path="res://Components/settings_menu.tscn" id="8_4812h"]
+[ext_resource type="Script" uid="uid://dbxg86skvhyt2" path="res://Controlers/game_over_screen.gd" id="10_6trqh"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_37k52"]
+height = 1.9995117
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_skscj"]
+albedo_color = Color(0.5171278, 0.46632987, 0.26642144, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_p3ltg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p3ltg"]
+albedo_color = Color(0.25984576, 0.5670086, 0.947553, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_skscj"]
+
+[sub_resource type="Theme" id="Theme_a3ekj"]
+default_font = ExtResource("3_ru13i")
+
+[sub_resource type="LabelSettings" id="LabelSettings_u4bb4"]
+
+[sub_resource type="Theme" id="Theme_6trqh"]
+default_font = ExtResource("3_ru13i")
+
+[sub_resource type="Gradient" id="Gradient_jn4fx"]
+offsets = PackedFloat32Array(0, 0.003322259)
+colors = PackedColorArray(0, 0, 0, 1, 0.49169436, 0.49169436, 0.49169436, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6trqh"]
+gradient = SubResource("Gradient_jn4fx")
+
+[sub_resource type="Theme" id="Theme_ru13i"]
+default_font = ExtResource("7_4812h")
+default_font_size = 48
+
+[sub_resource type="Theme" id="Theme_shybt"]
+default_font = ExtResource("7_4812h")
+default_font_size = 48
+
+[sub_resource type="AudioStreamMP3" id="AudioStreamMP3_sevw1"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=343018854 node_paths=PackedStringArray("WorldModel", "Camera") groups=["Player"]]
+floor_snap_length = 1.0
+script = ExtResource("1_tx4ao")
+WalkSpeed = 25.0
+SprintSpeed = 35.0
+lookSensitivity = 0.15
+WorldModel = NodePath("WorldModel")
+Camera = NodePath("HeadOg/Head/CameraSmooth/Camera3D")
+maxstamina = 100000.0
+staminaregen = 1000.0
+grappleRange = 50.0
+retractTreshold = 4.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1489119246]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03539, 0)
+shape = SubResource("CapsuleShape3D_37k52")
+
+[node name="WorldModel" type="Node3D" parent="." unique_id=323018525]
+unique_name_in_owner = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WorldModel" unique_id=932224863]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0427738, 0)
+material_override = SubResource("StandardMaterial3D_skscj")
+mesh = SubResource("CapsuleMesh_p3ltg")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="WorldModel" unique_id=1339256376]
+transform = Transform3D(0.45485407, 0, 0, 0, 0.16520017, 0, 0, 0, 0.20297767, 0, 1.5843469, -0.5135068)
+material_override = SubResource("StandardMaterial3D_p3ltg")
+mesh = SubResource("BoxMesh_skscj")
+
+[node name="HeadOg" type="Node3D" parent="." unique_id=923951692]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+
+[node name="Head" type="Node3D" parent="HeadOg" unique_id=543545259]
+unique_name_in_owner = true
+
+[node name="CameraSmooth" type="Node3D" parent="HeadOg/Head" unique_id=701279893]
+unique_name_in_owner = true
+
+[node name="Camera3D" type="Camera3D" parent="HeadOg/Head/CameraSmooth" unique_id=63604422]
+unique_name_in_owner = true
+cull_mask = 1048573
+fov = 90.0
+
+[node name="StairsAheadRaycast" type="RayCast3D" parent="." unique_id=1132329451]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.41385418, -0.7698529)
+target_position = Vector3(0, -0.55, 0)
+
+[node name="StairsBelowRaycast" type="RayCast3D" parent="." unique_id=1221216031]
+unique_name_in_owner = true
+target_position = Vector3(0, -0.75, 0)
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=452731707]
+
+[node name="Crosshair" type="TextureRect" parent="UI" unique_id=296191582]
+modulate = Color(1, 1, 1, 0.29411766)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -287.50003
+offset_right = 300.0
+offset_bottom = 312.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.07, 0.07)
+pivot_offset_ratio = Vector2(0.5, 0.48)
+texture = ExtResource("3_e3rli")
+
+[node name="speedometer" type="Label" parent="UI" unique_id=2102948094 node_paths=PackedStringArray("player")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -24.0
+offset_right = 206.0
+offset_bottom = -1.0
+grow_vertical = 0
+theme = SubResource("Theme_a3ekj")
+text = "SPEEEEEEEEEEEEEEED"
+label_settings = SubResource("LabelSettings_u4bb4")
+autowrap_mode = 1
+script = ExtResource("4_md0me")
+player = NodePath("../..")
+
+[node name="compass" type="TextureRect" parent="UI" unique_id=97369090 node_paths=PackedStringArray("player")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -315.0
+offset_top = -322.0
+offset_right = 160.0
+offset_bottom = 153.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.25, 0.25)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("4_u4bb4")
+script = ExtResource("5_rl02r")
+player = NodePath("../..")
+
+[node name="TimerLabel" type="Label" parent="UI" unique_id=544280395]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -23.0
+offset_right = 25.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_6trqh")
+theme_override_font_sizes/font_size = 32
+text = "Timer:"
+script = ExtResource("6_jn4fx")
+
+[node name="PauseMenu" type="CanvasLayer" parent="." unique_id=180168019]
+process_mode = 3
+script = ExtResource("6_iaqqc")
+
+[node name="Background" type="TextureRect" parent="PauseMenu" unique_id=1498409442]
+visible = false
+modulate = Color(0, 0, 0, 0.15686275)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_6trqh")
+
+[node name="MenuButtons" type="VBoxContainer" parent="PauseMenu" unique_id=268415520]
+unique_name_in_owner = true
+process_mode = 3
+visible = false
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 75.0
+offset_top = -29.5
+offset_right = 350.0
+offset_bottom = 290.5
+grow_vertical = 2
+theme = SubResource("Theme_ru13i")
+theme_override_constants/separation = 58
+
+[node name="Resume" type="Button" parent="PauseMenu/MenuButtons" unique_id=392868211]
+layout_mode = 2
+theme_override_font_sizes/font_size = 56
+text = "Resume"
+
+[node name="Options" type="Button" parent="PauseMenu/MenuButtons" unique_id=1846443836]
+layout_mode = 2
+theme_override_font_sizes/font_size = 56
+text = "Options
+"
+
+[node name="Exit" type="Button" parent="PauseMenu/MenuButtons" unique_id=2142431176]
+layout_mode = 2
+theme_override_font_sizes/font_size = 56
+text = "Exit"
+
+[node name="SettingsMenu" parent="PauseMenu" unique_id=914868135 instance=ExtResource("8_4812h")]
+unique_name_in_owner = true
+process_mode = 3
+visible = false
+
+[node name="GameOverScreen" type="CanvasLayer" parent="." unique_id=362990051]
+process_mode = 3
+script = ExtResource("10_6trqh")
+
+[node name="Background" type="TextureRect" parent="GameOverScreen" unique_id=465124643]
+visible = false
+modulate = Color(0, 0, 0, 0.15686275)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_6trqh")
+
+[node name="CenterContainer" type="CenterContainer" parent="GameOverScreen" unique_id=1270972911]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -186.0
+offset_top = -247.0
+offset_right = 169.0
+offset_bottom = 394.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_shybt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverScreen/CenterContainer" unique_id=1577259941]
+process_mode = 3
+layout_mode = 2
+
+[node name="GameOver" type="Label" parent="GameOverScreen/CenterContainer/VBoxContainer" unique_id=902169297]
+layout_mode = 2
+theme_override_font_sizes/font_size = 96
+text = "Game over"
+horizontal_alignment = 1
+
+[node name="Restart" type="Button" parent="GameOverScreen/CenterContainer/VBoxContainer" unique_id=1777780112]
+layout_mode = 2
+text = "Restart
+"
+
+[node name="Quit" type="Button" parent="GameOverScreen/CenterContainer/VBoxContainer" unique_id=1933567512]
+layout_mode = 2
+text = "Quit to menu"
+
+[node name="AudioListener3D" type="AudioListener3D" parent="." unique_id=1318102035]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5422461, 0)
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=40552970]
+process_mode = 3
+stream = SubResource("AudioStreamMP3_sevw1")
+volume_db = -15.0
+bus = &"Music"
+script = ExtResource("3_vnsyr")
+exportedTracks = [ExtResource("4_vlbih"), ExtResource("5_e3rli"), ExtResource("6_md0me")]
+
+[connection signal="pressed" from="PauseMenu/MenuButtons/Resume" to="PauseMenu" method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenu/MenuButtons/Options" to="PauseMenu" method="_on_options_pressed"]
+[connection signal="pressed" from="PauseMenu/MenuButtons/Exit" to="PauseMenu" method="_on_exit_pressed"]
+[connection signal="pressed" from="GameOverScreen/CenterContainer/VBoxContainer/Restart" to="GameOverScreen" method="_on_restart_pressed"]
+[connection signal="pressed" from="GameOverScreen/CenterContainer/VBoxContainer/Quit" to="GameOverScreen" method="_on_quit_pressed"]

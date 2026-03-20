@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://d127quneyp4d0"]
+
+[ext_resource type="VideoStream" uid="uid://cfxkl0ru7dkq7" path="res://ui/hm2-scs-bg.ogv" id="1_i26rj"]
+[ext_resource type="Script" uid="uid://cnjpf01it8o8r" path="res://ui/main_menu.gd" id="1_qoqlk"]
+[ext_resource type="FontFile" uid="uid://6nn5k7bk220y" path="res://ui/discoduckhalfital.ttf" id="2_eiy7p"]
+[ext_resource type="FontFile" uid="uid://p3tgg60tp8c3" path="res://ui/justicehalf.ttf" id="3_h7a2f"]
+[ext_resource type="PackedScene" uid="uid://b6fepxb7uq0f3" path="res://Components/settings_menu.tscn" id="5_iwfq2"]
+[ext_resource type="AudioStream" uid="uid://b1pj83ndqmmih" path="res://Music/Scattle - Inner Animal.mp3" id="6_7r1g0"]
+
+[sub_resource type="Gradient" id="Gradient_i26rj"]
+offsets = PackedFloat32Array(0.10164835, 0.5467033, 0.8543956)
+colors = PackedColorArray(0.28573117, 0.109918885, 0.011868393, 1, 0, 0, 0, 1, 0.06, 0.0011999988, 0.0061000083, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_eiy7p"]
+gradient = SubResource("Gradient_i26rj")
+width = 1920
+height = 1080
+fill_from = Vector2(0.4957265, 1)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_h7a2f"]
+font = ExtResource("2_eiy7p")
+font_size = 128
+font_color = Color(0.88513047, 0.2488187, 0.36557207, 1)
+
+[sub_resource type="Theme" id="Theme_qoqlk"]
+default_font = ExtResource("3_h7a2f")
+
+[node name="MainMenu" type="Node2D" unique_id=584895199]
+script = ExtResource("1_qoqlk")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=295488704]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = SubResource("GradientTexture2D_eiy7p")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=1739359786]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 145.0
+offset_right = 1920.0
+offset_bottom = 935.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("1_i26rj")
+autoplay = true
+
+[node name="Title" type="Label" parent="." unique_id=814482560]
+offset_right = 1920.0
+offset_bottom = 500.0
+text = "Neo Courier"
+label_settings = SubResource("LabelSettings_h7a2f")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=37709271]
+offset_top = 380.0
+offset_right = 1920.0
+offset_bottom = 1030.0
+theme = SubResource("Theme_qoqlk")
+
+[node name="MenuButtons" type="VBoxContainer" parent="CenterContainer" unique_id=1873801165]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Play Timed" type="Button" parent="CenterContainer/MenuButtons" unique_id=306030736]
+layout_mode = 2
+theme_override_font_sizes/font_size = 84
+text = "Play Timed"
+
+[node name="Play Freeroam" type="Button" parent="CenterContainer/MenuButtons" unique_id=1655838546]
+layout_mode = 2
+theme_override_font_sizes/font_size = 84
+text = "Play Freeroam
+"
+
+[node name="Options" type="Button" parent="CenterContainer/MenuButtons" unique_id=1359185448]
+layout_mode = 2
+theme_override_font_sizes/font_size = 84
+text = "Options"
+
+[node name="Exit" type="Button" parent="CenterContainer/MenuButtons" unique_id=724940037]
+layout_mode = 2
+theme_override_font_sizes/font_size = 84
+text = "Exit"
+
+[node name="SettingsMenu" parent="CenterContainer" unique_id=914868135 instance=ExtResource("5_iwfq2")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=337440394]
+stream = ExtResource("6_7r1g0")
+volume_db = -25.0
+autoplay = true
+bus = &"Music"
+
+[connection signal="pressed" from="CenterContainer/MenuButtons/Play Timed" to="." method="_on_play_timed_pressed"]
+[connection signal="pressed" from="CenterContainer/MenuButtons/Play Freeroam" to="." method="_on_play_freeroam_pressed"]
+[connection signal="pressed" from="CenterContainer/MenuButtons/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="CenterContainer/MenuButtons/Exit" to="." method="_on_exit_pressed"]

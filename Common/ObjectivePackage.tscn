@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://0e4fv5yx6b1q"]
+
+[ext_resource type="Script" uid="uid://5dyxvtcj0kpg" path="res://Scripts/ObjectivePackage.cs" id="1_mcngj"]
+[ext_resource type="PackedScene" uid="uid://bcjxffprujt5g" path="res://Meshes/pica box.glb" id="2_dg3e5"]
+[ext_resource type="PackedScene" uid="uid://7bx78fqax7r2" path="res://Components/PackageComponent.tscn" id="2_egxlk"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_egxlk"]
+size = Vector3(3, 0.15, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mcngj"]
+size = Vector3(2.993042, 0.107177734, 2.9952393)
+
+[node name="ObjectivePackage" type="Node3D" unique_id=2041749406 node_paths=PackedStringArray("objective")]
+script = ExtResource("1_mcngj")
+objective = NodePath("Base/pica box")
+BobbingAmount = 0.25
+
+[node name="Base" type="StaticBody3D" parent="." unique_id=1267917480]
+
+[node name="BaseMesh" type="MeshInstance3D" parent="Base" unique_id=448571680]
+mesh = SubResource("BoxMesh_egxlk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Base" unique_id=1217306071]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.005432129, 0.020874023, -0.0006713867)
+shape = SubResource("BoxShape3D_mcngj")
+
+[node name="pica box" parent="Base" unique_id=1100791251 instance=ExtResource("2_dg3e5")]
+unique_name_in_owner = true
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.3195896, 0)
+
+[node name="PackageComponent" parent="." unique_id=379957539 node_paths=PackedStringArray("objective") instance=ExtResource("2_egxlk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1901893, 0)
+objective = NodePath("../Base/pica box")

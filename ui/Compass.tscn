@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://blot05gt40643"]
+
+[ext_resource type="Texture2D" uid="uid://dftbsjkbqhllj" path="res://ui/compass mk2.png" id="1_jo3lg"]
+[ext_resource type="Script" uid="uid://tug2b4fmr5ar" path="res://ui/Compass.cs" id="2_fsoxp"]
+
+[node name="Compass" type="TextureRect" unique_id=1140033971]
+offset_left = 757.0
+offset_top = 257.0
+offset_right = 1357.0
+offset_bottom = 857.0
+rotation = 3.1415927
+scale = Vector2(0.3, 0.3)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("1_jo3lg")
+script = ExtResource("2_fsoxp")

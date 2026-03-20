@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://dkd51heiar74d"]
+
+[ext_resource type="PackedScene" uid="uid://u62kfxsfw8kx" path="res://Controlers/FPScontroller.tscn" id="1_saj1g"]
+[ext_resource type="Texture2D" uid="uid://bvnf20i6qcgsl" path="res://SL-072622-51930-14.jpg" id="2_i84ix"]
+[ext_resource type="PackedScene" uid="uid://dif5cssrkirjy" path="res://Components/BoundingBox.tscn" id="3_pajgk"]
+[ext_resource type="PackedScene" uid="uid://0e4fv5yx6b1q" path="res://Common/ObjectivePackage.tscn" id="4_3kwkb"]
+[ext_resource type="PackedScene" uid="uid://c0x3d8fkai3af" path="res://Common/ObjectiveRecepticle.tscn" id="5_dc56b"]
+[ext_resource type="PackedScene" uid="uid://bogl1ap5v8s66" path="res://Controlers/PackageMasterControler.tscn" id="6_re8a3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tuvwr"]
+albedo_texture = ExtResource("2_i84ix")
+
+[sub_resource type="PrismMesh" id="PrismMesh_ckwvq"]
+size = Vector3(5, 10, 3)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_utdix"]
+sky_top_color = Color(0.38040733, 0.07220236, 0.61319435, 1)
+sky_horizon_color = Color(0.46099126, 0.27674937, 0.06474841, 1)
+sky_curve = 0.20490597
+ground_bottom_color = Color(0.25197557, 0.14754838, 0.02569193, 1)
+ground_horizon_color = Color(0.3065155, 0.103461154, 0.025350178, 1)
+
+[sub_resource type="Sky" id="Sky_utdix"]
+sky_material = SubResource("ProceduralSkyMaterial_utdix")
+
+[sub_resource type="Environment" id="Environment_tdfdt"]
+background_mode = 2
+background_energy_multiplier = 0.8
+sky = SubResource("Sky_utdix")
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_u1vhd"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_utdix"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_utdix"]
+height = 1.9680176
+
+[node name="Node3D" type="Node3D" unique_id=398561024]
+
+[node name="Player" parent="." unique_id=343018854 instance=ExtResource("1_saj1g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2697105, 0)
+WalkSpeed = 10.0
+SprintSpeed = 15.0
+groundDecelleration = 5.0
+airCap = 0.9
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1877397073]
+material_override = SubResource("StandardMaterial3D_tuvwr")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=291354937]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.127068, 0, -2.491455)
+size = Vector3(162.0413, 1, 50.779785)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1960778672]
+transform = Transform3D(1, 0, 0, 0, 0.70114577, 0.71301794, 0, -0.71301794, 0.70114577, -17.899658, 7.1648836, 23.359404)
+size = Vector3(92.79932, 1, 20.156372)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1448463262]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5, 15.5, 31)
+size = Vector3(100, 4, 1)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D" unique_id=480524681]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, -25, 8, -29)
+size = Vector3(109, 13, 1)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D" unique_id=723215100]
+transform = Transform3D(-0.08087562, 0, 1.0538546, 0, 0.57590085, 0, -3.0318978, 0, -0.028111484, 0, 3.1837773, -20.526823)
+mesh = SubResource("PrismMesh_ckwvq")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1726808556]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.65227, 15.7085, -2.815094)
+size = Vector3(2.7919922, 1, 70.58356)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1817550847]
+transform = Transform3D(1, 0, 0, 0, 0.70114577, 0.71301794, 0, -0.71301794, 0.70114577, -110.045235, 30.204906, 52.37991)
+size = Vector3(92.79932, 1, 84.78314)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1725630260]
+transform = Transform3D(0.869538, -0.493866, 0, 0.493866, 0.869538, 0, 0, 0, 1, -44.257225, 0.36816406, -0.3317871)
+size = Vector3(5.216797, 0.26367188, 3.1567383)
+
+[node name="BoundingBox" parent="." unique_id=511479372 instance=ExtResource("3_pajgk")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=126514289]
+transform = Transform3D(-0.60004026, -0.7997927, -0.016824864, 0.44226113, -0.34918296, 0.8261212, -0.6666008, 0.48826504, 0.5632411, 0, 32, -15)
+light_color = Color(0.9411765, 0.48235294, 0.12156863, 1)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1075725137]
+environment = SubResource("Environment_tdfdt")
+camera_attributes = SubResource("CameraAttributesPhysical_u1vhd")
+
+[node name="Sources" type="Node3D" parent="." unique_id=292312942]
+
+[node name="ObjectivePackage1" parent="Sources" unique_id=2041749406 instance=ExtResource("4_3kwkb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.613396, 0.52131796, 17.500534)
+
+[node name="ObjectivePackage2" parent="Sources" unique_id=901120522 instance=ExtResource("4_3kwkb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.460957, 1.8510542, 0)
+
+[node name="ObjectivePackage3" parent="Sources" unique_id=2050054127 instance=ExtResource("4_3kwkb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.234226, 0.68281794, 11.044628)
+
+[node name="Destinations" type="Node3D" parent="." unique_id=170840849]
+
+[node name="ObjectiveRecepticle" parent="Destinations" unique_id=2035276712 instance=ExtResource("5_dc56b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -123.06133, 0.50053215, 0)
+
+[node name="ObjectiveRecepticle2" parent="Destinations" unique_id=1404882795 instance=ExtResource("5_dc56b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.039398, 0.4619522, -12.050568)
+
+[node name="PackageMasterControler" parent="." unique_id=1748207165 node_paths=PackedStringArray("sourceNodesRoot", "destinationNodesRoot") instance=ExtResource("6_re8a3")]
+sourceNodesRoot = NodePath("../Sources")
+destinationNodesRoot = NodePath("../Destinations")
+isCompetitive = true
+startingTime = 10.0
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=667194916]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.73789, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=336470561]
+mesh = SubResource("CylinderMesh_utdix")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=824496483]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.016875267, 0)
+shape = SubResource("CylinderShape3D_utdix")

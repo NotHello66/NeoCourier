@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bogl1ap5v8s66"]
+
+[ext_resource type="Script" uid="uid://c8ghodrtl2sia" path="res://Scripts/MasterPackageController.gd" id="1_4pdwv"]
+
+[node name="PackageMasterControler" type="Node3D" unique_id=1748207165 groups=["PMC"]]
+script = ExtResource("1_4pdwv")

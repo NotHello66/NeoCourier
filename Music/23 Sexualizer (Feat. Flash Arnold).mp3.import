@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d0ovvfk3st7rl"
+path="res://.godot/imported/23 Sexualizer (Feat. Flash Arnold).mp3-7df2254ba0316c95faacd3f8bd995d28.mp3str"
+
+[deps]
+
+source_file="res://Music/23 Sexualizer (Feat. Flash Arnold).mp3"
+dest_files=["res://.godot/imported/23 Sexualizer (Feat. Flash Arnold).mp3-7df2254ba0316c95faacd3f8bd995d28.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
