@@ -67,7 +67,9 @@ public partial class FpScontroller : CharacterBody3D
 	MeshInstance3D _grappleRope;
 	ImmediateMesh _grappleMesh;
 
-	Node gameData;
+	Vector3 lastPosition;
+
+    Node gameData;
 	//tie kas zino
 	public float GetMoveSpeed(double delta)
 	{
@@ -98,6 +100,7 @@ public partial class FpScontroller : CharacterBody3D
 	}
 	public override void _Ready()
 	{
+		lastPosition = GlobalPosition;
 		gameData = GetNode<Node>("/root/GameData");
 		//      PackageController = GetTree().GetFirstNodeInGroup("PMC") as PackageMasterControler;
 
@@ -354,7 +357,11 @@ public partial class FpScontroller : CharacterBody3D
 				_HeadBobEffect(delta);
 			}
 			_HandleGroundPhysics(delta);
-			if (!isStunned && Input.IsActionJustPressed("jump") || AutoBhop == true && Input.IsActionPressed("jump") && !isStunned)
+            if (IsOnFloor() && Velocity.Y <= 0)
+            {
+                Velocity = Velocity.Slide(GetFloorNormal());
+            }
+            if (!isStunned && Input.IsActionJustPressed("jump") || AutoBhop == true && Input.IsActionPressed("jump") && !isStunned)
 			{
 				Vector3 v = Velocity;
 				v.Y += JumpVelocity;
@@ -389,6 +396,7 @@ public partial class FpScontroller : CharacterBody3D
 			{
 				hasPackage = true;
 				activeSource.Set("hasPackage", false);
+				gameData.Set("hasPackage", true);
 			}
 
 			if (activeDest != null && hasPackage == true &&
@@ -396,13 +404,16 @@ public partial class FpScontroller : CharacterBody3D
 			{
 				hasPackage = false;
 				gameData.Set("packageActive", false);
-			}
+				gameData.Set("hasPackage", false);
+                gameData.Set("deliveriesComplete", gameData.Get("deliveriesComplete").AsInt32() + 1);
+            }
 		}
 		if (isStunned)
 		{
 			//GD.Print("Player is stunned for :" + (stunDuration - stunTimer));
 		}
 		//AnimationTree.Set("parameters/BlendSpace1D/blend_position", Velocity.Length() / SprintSpeed);
+		gameData.Set("distanceCovered", gameData.Get("distanceCovered").AsSingle() + lastPosition.DistanceTo(GlobalPosition));
 	}
 	public void clipVelocity(Vector3 normal, float overbounce)
 	{
@@ -473,38 +484,55 @@ public partial class FpScontroller : CharacterBody3D
 	}
 	public void _HandleGrapple(double delta)
 	{
-		if (Input.IsActionJustPressed("grapple"))
-		{
-			if (Grapple == GrappleState.Idle)
-			{
-				if (_grappleRay == null || !_grappleRay.IsInsideTree())
-				{
-					_grappleRay = new RayCast3D();
-					_grappleRay.TargetPosition = new Vector3(0, 0, -grappleRange);
-					_grappleRay.CollisionMask = 1;
-					Camera.AddChild(_grappleRay);
-				}
-				_grappleRay.ForceRaycastUpdate();
-				if (_grappleRay.IsColliding())
-				{
-					_grapplePoint = _grappleRay.GetCollisionPoint();
-					Grapple = GrappleState.Pulling;
-				}
-			}
-			else
-			{
-				Grapple = GrappleState.Idle;
-				return;
-			}
-		}
+        bool grappleHoldMode = gameData.Get("grappleHoldMode").AsBool();
 
-		if (Grapple == GrappleState.Pulling)
+        bool grapplePressed = Input.IsActionJustPressed("grapple");
+        bool grappleHeld = Input.IsActionPressed("grapple");
+        bool grappleReleased = Input.IsActionJustReleased("grapple");
+
+        bool shouldStartGrapple = grapplePressed; 
+        bool shouldStopGrapple;
+
+        if (grappleHoldMode)
+        {
+            shouldStartGrapple = grapplePressed;
+            shouldStopGrapple = grappleReleased;
+        }
+        else
+        {
+            shouldStartGrapple = grapplePressed && Grapple == GrappleState.Idle;
+            shouldStopGrapple = grapplePressed && Grapple != GrappleState.Idle;
+        }
+
+        if (shouldStartGrapple && Grapple == GrappleState.Idle)
+        {
+            if (_grappleRay == null || !_grappleRay.IsInsideTree())
+            {
+                _grappleRay = new RayCast3D();
+                _grappleRay.TargetPosition = new Vector3(0, 0, -grappleRange);
+                _grappleRay.CollisionMask = 1;
+                Camera.AddChild(_grappleRay);
+            }
+            _grappleRay.ForceRaycastUpdate();
+            if (_grappleRay.IsColliding())
+            {
+                _grapplePoint = _grappleRay.GetCollisionPoint();
+                Grapple = GrappleState.Pulling;
+            }
+        }
+        else if (shouldStopGrapple)
+        {
+            Grapple = GrappleState.Idle;
+            return;
+        }
+
+        if (Grapple == GrappleState.Pulling)
 		{
 			Vector3 toPoint = _grapplePoint - GlobalPosition;
 			Vector3 v = Velocity;
 			v += toPoint.Normalized() * pullForce * (float)delta;
-			if (v.Length() > maxGrappleSpeed)
-				v = v.Normalized() * maxGrappleSpeed;
+			//if (v.Length() > maxGrappleSpeed)
+			//	v = v.Normalized() * maxGrappleSpeed;
 			Velocity = v;
 
 			if (toPoint.Length() < retractTreshold)
@@ -549,4 +577,12 @@ public partial class FpScontroller : CharacterBody3D
 		}
 
 	}
+    public override void _ExitTree()
+    {
+        if (_grappleRope != null && IsInstanceValid(_grappleRope))
+        {
+            _grappleRope.QueueFree();
+            _grappleRope = null;
+        }
+    }
 }

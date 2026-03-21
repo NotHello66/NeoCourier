@@ -7,11 +7,13 @@ var destinationNodes: Array = []
 @export var isCompetitive : bool = false
 @export var startingTime :float = 200
 @export var timeShrink: float = 0.9
+@export var timePerMeter :float = 0.12
 var shrinkingTimer :float
 var packageActive: bool = false
-var activePackageSource = null
+var activePackageSource : Node3D = null
 var activePackageDestination: Node3D = null
 var rng = RandomNumberGenerator.new()
+var previousDistanceCovered : int = 0
 
 func _ready():
 	shrinkingTimer = startingTime;
@@ -33,6 +35,7 @@ func _ready():
 func _physics_process(delta):
 	packageActive = GameData.packageActive
 	if not packageActive:
+		GameData.distanceCovered += previousDistanceCovered
 		assignNewPackage()
 	if isCompetitive:
 		GameData.timer -= delta
@@ -47,6 +50,8 @@ func assignNewPackage():
 	GameData.activePackageSource = activePackageSource
 	packageActive = true
 	GameData.packageActive = true
-	shrinkingTimer *= timeShrink
+	shrinkingTimer = timePerMeter * timeShrink * activePackageSource.global_position.distance_to(activePackageDestination.global_position)
+	previousDistanceCovered = activePackageSource.global_position.distance_to(activePackageDestination.global_position)
+	timeShrink *= 0.9
 	GameData.timer += shrinkingTimer
 	print("Source: " + activePackageSource.get_parent().name + "; Destination: " + activePackageDestination.name)

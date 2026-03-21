@@ -3,9 +3,8 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$CenterContainer/SettingsMenu/Fullscreen.button_pressed = true if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN else false
-	$CenterContainer/SettingsMenu/MainVolSlider.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master")))
-
+	pass
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
@@ -18,7 +17,7 @@ func _on_play_timed_pressed() -> void:
 
 func _on_play_freeroam_pressed() -> void:
 	GameData.gameOver = false;
-	get_tree().change_scene_to_file("res://testing scene.tscn")
+	get_tree().change_scene_to_file("res://map1.tscn")
 
 
 func _on_options_pressed() -> void:

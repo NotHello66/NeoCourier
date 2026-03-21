@@ -7,6 +7,9 @@
 [sub_resource type="BoxMesh" id="BoxMesh_egxlk"]
 size = Vector3(3, 0.15, 3)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dg3e5"]
+albedo_color = Color(0.27, 0.26298, 0.2592, 1)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_mcngj"]
 size = Vector3(2.993042, 0.107177734, 2.9952393)
 
@@ -19,6 +22,7 @@ BobbingAmount = 0.25
 
 [node name="BaseMesh" type="MeshInstance3D" parent="Base" unique_id=448571680]
 mesh = SubResource("BoxMesh_egxlk")
+surface_material_override/0 = SubResource("StandardMaterial3D_dg3e5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Base" unique_id=1217306071]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.005432129, 0.020874023, -0.0006713867)

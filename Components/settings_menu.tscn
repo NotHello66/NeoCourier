@@ -3,74 +3,98 @@
 [ext_resource type="Theme" uid="uid://bph4sb36tfyd7" path="res://Menu themes.tres" id="1_ikvlb"]
 [ext_resource type="Script" uid="uid://cfmrk8s7uiig3" path="res://Scripts/settings.gd" id="2_u3vo4"]
 [ext_resource type="Script" uid="uid://bs53rmebwb8wk" path="res://Scripts/resolution_picker.gd" id="3_far6c"]
+[ext_resource type="Script" uid="uid://dyttgamyxpdnm" path="res://Scripts/grapple_picker.gd" id="4_u3vo4"]
 
-[node name="SettingsMenu" type="VBoxContainer" unique_id=914868135]
+[node name="SettingMenu" type="HBoxContainer" unique_id=511177929]
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 80.0
-offset_top = -150.0
-offset_right = 400.0
-offset_bottom = 350.0
+offset_left = 30.0
+offset_top = -325.0
+offset_right = 1326.0
+offset_bottom = 325.0
 grow_vertical = 2
 theme = ExtResource("1_ikvlb")
-theme_override_constants/separation = 16
+theme_override_constants/separation = 199
 script = ExtResource("2_u3vo4")
 
-[node name="Fullscreen" type="CheckButton" parent="." unique_id=1177037536]
+[node name="Vbox1" type="VBoxContainer" parent="." unique_id=914868135]
+layout_mode = 2
+theme = ExtResource("1_ikvlb")
+theme_override_constants/separation = 16
+
+[node name="Fullscreen" type="CheckButton" parent="Vbox1" unique_id=1177037536]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 75
 text = "Fullscreen"
 
-[node name="ResolutionPicker" type="MenuButton" parent="." unique_id=1025306870]
+[node name="ResolutionPicker" type="MenuButton" parent="Vbox1" unique_id=1025306870]
 layout_mode = 2
 theme_override_font_sizes/font_size = 75
 text = "Resolution"
 script = ExtResource("3_far6c")
 
-[node name="Label" type="Label" parent="." unique_id=1084047747]
+[node name="Label" type="Label" parent="Vbox1" unique_id=1084047747]
 custom_minimum_size = Vector2(484, 55)
 layout_mode = 2
 theme_override_font_sizes/font_size = 75
 text = "Main Volume"
 horizontal_alignment = 1
 
-[node name="MainVolSlider" type="HSlider" parent="." unique_id=614352196]
+[node name="MainVolSlider" type="HSlider" parent="Vbox1" unique_id=614352196]
+unique_name_in_owner = true
 layout_mode = 2
 max_value = 1.0
 step = 0.0
 
-[node name="Label2" type="Label" parent="." unique_id=1669173805]
+[node name="Label2" type="Label" parent="Vbox1" unique_id=1669173805]
 custom_minimum_size = Vector2(484, 55)
 layout_mode = 2
 theme_override_font_sizes/font_size = 75
 text = "Music Volume"
 horizontal_alignment = 1
 
-[node name="MusicVolSlider" type="HSlider" parent="." unique_id=129521898]
+[node name="MusicVolSlider" type="HSlider" parent="Vbox1" unique_id=129521898]
+unique_name_in_owner = true
 layout_mode = 2
 max_value = 1.0
 step = 0.0
 
-[node name="Label3" type="Label" parent="." unique_id=109279738]
+[node name="Label3" type="Label" parent="Vbox1" unique_id=109279738]
 custom_minimum_size = Vector2(484, 55)
 layout_mode = 2
 theme_override_font_sizes/font_size = 75
 text = "SFX Volume"
 horizontal_alignment = 1
 
-[node name="SfxVolSlider" type="HSlider" parent="." unique_id=1680926756]
+[node name="SfxVolSlider" type="HSlider" parent="Vbox1" unique_id=1680926756]
+unique_name_in_owner = true
 layout_mode = 2
 max_value = 1.0
 step = 0.0
 
-[node name="Back" type="Button" parent="." unique_id=169161856]
+[node name="Back" type="Button" parent="Vbox1" unique_id=169161856]
 layout_mode = 2
 theme_override_font_sizes/font_size = 52
 text = "Back"
 
-[connection signal="toggled" from="Fullscreen" to="." method="_on_fullscreen_toggled"]
-[connection signal="value_changed" from="MainVolSlider" to="." method="_on_main_vol_slider_value_changed"]
-[connection signal="value_changed" from="MusicVolSlider" to="." method="_on_music_vol_slider_value_changed"]
-[connection signal="value_changed" from="SfxVolSlider" to="." method="_on_sfx_vol_slider_value_changed"]
-[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2124649856]
+layout_mode = 2
+
+[node name="GrapplePicker" type="MenuButton" parent="VBoxContainer" unique_id=1211913140]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "Grapple Mode"
+script = ExtResource("4_u3vo4")
+
+[connection signal="toggled" from="Vbox1/Fullscreen" to="Vbox1" method="_on_fullscreen_toggled"]
+[connection signal="toggled" from="Vbox1/Fullscreen" to="." method="_on_fullscreen_toggled"]
+[connection signal="value_changed" from="Vbox1/MainVolSlider" to="Vbox1" method="_on_main_vol_slider_value_changed"]
+[connection signal="value_changed" from="Vbox1/MainVolSlider" to="." method="_on_main_vol_slider_value_changed"]
+[connection signal="value_changed" from="Vbox1/MusicVolSlider" to="Vbox1" method="_on_music_vol_slider_value_changed"]
+[connection signal="value_changed" from="Vbox1/MusicVolSlider" to="." method="_on_music_vol_slider_value_changed"]
+[connection signal="value_changed" from="Vbox1/SfxVolSlider" to="Vbox1" method="_on_sfx_vol_slider_value_changed"]
+[connection signal="value_changed" from="Vbox1/SfxVolSlider" to="." method="_on_sfx_vol_slider_value_changed"]
+[connection signal="pressed" from="Vbox1/Back" to="Vbox1" method="_on_back_pressed"]
+[connection signal="pressed" from="Vbox1/Back" to="." method="_on_back_pressed"]

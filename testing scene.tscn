@@ -14,19 +14,20 @@ albedo_texture = ExtResource("2_e10wp")
 size = Vector3(5, 10, 3)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_utdix"]
-sky_top_color = Color(0.38040733, 0.07220236, 0.61319435, 1)
-sky_horizon_color = Color(0.46099126, 0.27674937, 0.06474841, 1)
+sky_top_color = Color(0.40381998, 0.13420002, 0.61, 1)
+sky_horizon_color = Color(0.46, 0.29256, 0.101200014, 1)
 sky_curve = 0.20490597
+sky_energy_multiplier = 1.1
 ground_bottom_color = Color(0.25197557, 0.14754838, 0.02569193, 1)
 ground_horizon_color = Color(0.3065155, 0.103461154, 0.025350178, 1)
 
-[sub_resource type="Sky" id="Sky_utdix"]
+[sub_resource type="Sky" id="Sky_tdfdt"]
 sky_material = SubResource("ProceduralSkyMaterial_utdix")
 
 [sub_resource type="Environment" id="Environment_tdfdt"]
 background_mode = 2
 background_energy_multiplier = 0.8
-sky = SubResource("Sky_utdix")
+sky = SubResource("Sky_tdfdt")
 
 [sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_u1vhd"]
 
@@ -84,7 +85,8 @@ size = Vector3(5.216797, 0.26367188, 3.1567383)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=126514289]
 transform = Transform3D(-0.60004026, -0.7997927, -0.016824864, 0.44226113, -0.34918296, 0.8261212, -0.6666008, 0.48826504, 0.5632411, 0, 32, -15)
-light_color = Color(0.9411765, 0.48235294, 0.12156863, 1)
+light_color = Color(0.94, 0.5937666, 0.32900003, 1)
+light_energy = 1.2
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1075725137]

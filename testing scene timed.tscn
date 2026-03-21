@@ -13,22 +13,23 @@ albedo_texture = ExtResource("2_i84ix")
 [sub_resource type="PrismMesh" id="PrismMesh_ckwvq"]
 size = Vector3(5, 10, 3)
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_utdix"]
-sky_top_color = Color(0.38040733, 0.07220236, 0.61319435, 1)
-sky_horizon_color = Color(0.46099126, 0.27674937, 0.06474841, 1)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_t800l"]
+sky_top_color = Color(0.40381998, 0.13420002, 0.61, 1)
+sky_horizon_color = Color(0.46, 0.29256, 0.101200014, 1)
 sky_curve = 0.20490597
+sky_energy_multiplier = 1.1
 ground_bottom_color = Color(0.25197557, 0.14754838, 0.02569193, 1)
 ground_horizon_color = Color(0.3065155, 0.103461154, 0.025350178, 1)
 
 [sub_resource type="Sky" id="Sky_utdix"]
-sky_material = SubResource("ProceduralSkyMaterial_utdix")
+sky_material = SubResource("ProceduralSkyMaterial_t800l")
 
-[sub_resource type="Environment" id="Environment_tdfdt"]
+[sub_resource type="Environment" id="Environment_myrsr"]
 background_mode = 2
 background_energy_multiplier = 0.8
 sky = SubResource("Sky_utdix")
 
-[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_u1vhd"]
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_p1vae"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_utdix"]
 
@@ -43,6 +44,12 @@ WalkSpeed = 10.0
 SprintSpeed = 15.0
 groundDecelleration = 5.0
 airCap = 0.9
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2140376524]
+transform = Transform3D(-0.6000403, -0.7997928, -0.016825015, 0.44226116, -0.34918296, 0.8261213, -0.6666009, 0.488265, 0.5632412, 0, 32, -15)
+light_color = Color(0.94, 0.5937666, 0.32900003, 1)
+light_energy = 1.2
+shadow_enabled = true
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1877397073]
 material_override = SubResource("StandardMaterial3D_tuvwr")
@@ -82,14 +89,9 @@ size = Vector3(5.216797, 0.26367188, 3.1567383)
 
 [node name="BoundingBox" parent="." unique_id=511479372 instance=ExtResource("3_pajgk")]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=126514289]
-transform = Transform3D(-0.60004026, -0.7997927, -0.016824864, 0.44226113, -0.34918296, 0.8261212, -0.6666008, 0.48826504, 0.5632411, 0, 32, -15)
-light_color = Color(0.9411765, 0.48235294, 0.12156863, 1)
-shadow_enabled = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1075725137]
-environment = SubResource("Environment_tdfdt")
-camera_attributes = SubResource("CameraAttributesPhysical_u1vhd")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=276758140]
+environment = SubResource("Environment_myrsr")
+camera_attributes = SubResource("CameraAttributesPhysical_p1vae")
 
 [node name="Sources" type="Node3D" parent="." unique_id=292312942]
 
@@ -114,7 +116,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.039398, 0.4619522, -12.050
 sourceNodesRoot = NodePath("../Sources")
 destinationNodesRoot = NodePath("../Destinations")
 isCompetitive = true
-startingTime = 10.0
+startingTime = 30.0
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=667194916]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.73789, 0)

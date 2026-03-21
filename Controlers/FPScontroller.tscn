@@ -14,7 +14,9 @@
 [ext_resource type="AudioStream" uid="uid://d0ovvfk3st7rl" path="res://Music/23 Sexualizer (Feat. Flash Arnold).mp3" id="6_md0me"]
 [ext_resource type="FontFile" uid="uid://p3tgg60tp8c3" path="res://ui/justicehalf.ttf" id="7_4812h"]
 [ext_resource type="PackedScene" uid="uid://b6fepxb7uq0f3" path="res://Components/settings_menu.tscn" id="8_4812h"]
+[ext_resource type="Script" uid="uid://dcro3jtfove2g" path="res://Controlers/UIDistanceToTarget.gd" id="8_shybt"]
 [ext_resource type="Script" uid="uid://dbxg86skvhyt2" path="res://Controlers/game_over_screen.gd" id="10_6trqh"]
+[ext_resource type="Script" uid="uid://kh5l6l0tkqr2" path="res://Controlers/delivery_count.gd" id="13_a3ekj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_37k52"]
 height = 1.9995117
@@ -37,6 +39,9 @@ default_font = ExtResource("3_ru13i")
 [sub_resource type="Theme" id="Theme_6trqh"]
 default_font = ExtResource("3_ru13i")
 
+[sub_resource type="Theme" id="Theme_12vh2"]
+default_font = ExtResource("3_ru13i")
+
 [sub_resource type="Gradient" id="Gradient_jn4fx"]
 offsets = PackedFloat32Array(0, 0.003322259)
 colors = PackedColorArray(0, 0, 0, 1, 0.49169436, 0.49169436, 0.49169436, 1)
@@ -57,13 +62,15 @@ default_font_size = 48
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=343018854 node_paths=PackedStringArray("WorldModel", "Camera") groups=["Player"]]
 floor_snap_length = 1.0
 script = ExtResource("1_tx4ao")
-WalkSpeed = 25.0
+WalkSpeed = 15.0
 SprintSpeed = 35.0
 lookSensitivity = 0.15
+groundFrictionOG = 5.0
 WorldModel = NodePath("WorldModel")
 Camera = NodePath("HeadOg/Head/CameraSmooth/Camera3D")
 maxstamina = 100000.0
 staminaregen = 1000.0
+airCap = 0.95
 grappleRange = 50.0
 retractTreshold = 4.0
 
@@ -177,6 +184,21 @@ theme_override_font_sizes/font_size = 32
 text = "Timer:"
 script = ExtResource("6_jn4fx")
 
+[node name="Distance" type="Label" parent="UI" unique_id=536731429]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -153.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = SubResource("Theme_12vh2")
+text = "xxxx m"
+horizontal_alignment = 1
+script = ExtResource("8_shybt")
+
 [node name="PauseMenu" type="CanvasLayer" parent="." unique_id=180168019]
 process_mode = 3
 script = ExtResource("6_iaqqc")
@@ -232,6 +254,7 @@ process_mode = 3
 script = ExtResource("10_6trqh")
 
 [node name="Background" type="TextureRect" parent="GameOverScreen" unique_id=465124643]
+process_mode = 3
 visible = false
 modulate = Color(0, 0, 0, 0.15686275)
 anchors_preset = 15
@@ -242,6 +265,7 @@ grow_vertical = 2
 texture = SubResource("GradientTexture1D_6trqh")
 
 [node name="CenterContainer" type="CenterContainer" parent="GameOverScreen" unique_id=1270972911]
+process_mode = 3
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
@@ -265,6 +289,13 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 96
 text = "Game over"
 horizontal_alignment = 1
+
+[node name="deliveryCount" type="Label" parent="GameOverScreen/CenterContainer/VBoxContainer" unique_id=1788941717]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_ru13i")
+text = "Deliveries done:"
+horizontal_alignment = 1
+script = ExtResource("13_a3ekj")
 
 [node name="Restart" type="Button" parent="GameOverScreen/CenterContainer/VBoxContainer" unique_id=1777780112]
 layout_mode = 2
