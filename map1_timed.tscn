@@ -1,20 +1,20 @@
-[gd_scene format=3 uid="uid://csgae6k6gx6lm"]
+[gd_scene format=3 uid="uid://bo1usd3jwpvbf"]
 
-[ext_resource type="PackedScene" uid="uid://u62kfxsfw8kx" path="res://Controlers/FPScontroller.tscn" id="1_ibjaa"]
-[ext_resource type="Texture2D" uid="uid://bhxauakacm67i" path="res://textures/6096-normal.jpg" id="1_p84jh"]
-[ext_resource type="PackedScene" uid="uid://bogl1ap5v8s66" path="res://Controlers/PackageMasterControler.tscn" id="2_cf5bg"]
-[ext_resource type="LightmapGIData" uid="uid://b7efdgjndp433" path="res://textures/map1.lmbake" id="3_57qb2"]
-[ext_resource type="PackedScene" uid="uid://0e4fv5yx6b1q" path="res://Common/ObjectivePackage.tscn" id="4_bwbs4"]
-[ext_resource type="Texture2D" uid="uid://bvnf20i6qcgsl" path="res://SL-072622-51930-14.jpg" id="4_na4y3"]
-[ext_resource type="PackedScene" uid="uid://c0x3d8fkai3af" path="res://Common/ObjectiveRecepticle.tscn" id="5_na4y3"]
-[ext_resource type="Texture2D" uid="uid://cpfwb43li2krr" path="res://textures/bin ignas.png" id="7_sko3c"]
-[ext_resource type="Script" uid="uid://di68kstndq27g" path="res://Scripts/spinner.gd" id="8_sko3c"]
-[ext_resource type="Texture2D" uid="uid://braspgjew4oe7" path="res://textures/gyat.jpg" id="9_qva1w"]
-[ext_resource type="Texture2D" uid="uid://dqbhu24liaxki" path="res://textures/kanibalas.png" id="10_uytli"]
-[ext_resource type="Script" uid="uid://cj0ixxrl55hl1" path="res://Scripts/turbo rotater.gd" id="11_2kv0r"]
-[ext_resource type="PackedScene" uid="uid://dif5cssrkirjy" path="res://Components/BoundingBox.tscn" id="11_vl4cn"]
-[ext_resource type="PackedScene" uid="uid://b68esa8mek3nj" path="res://Meshes/4 sided pyramid.glb" id="12_r8k3y"]
-[ext_resource type="Texture2D" uid="uid://2eic6itbc7oq" path="res://textures/polish pyramid.png" id="13_7aikp"]
+[ext_resource type="PackedScene" uid="uid://u62kfxsfw8kx" path="res://Controlers/FPScontroller.tscn" id="1_yftjm"]
+[ext_resource type="PackedScene" uid="uid://bogl1ap5v8s66" path="res://Controlers/PackageMasterControler.tscn" id="2_nadvc"]
+[ext_resource type="LightmapGIData" uid="uid://b7efdgjndp433" path="res://textures/map1.lmbake" id="3_6jr4i"]
+[ext_resource type="PackedScene" uid="uid://dif5cssrkirjy" path="res://Components/BoundingBox.tscn" id="4_bv2pf"]
+[ext_resource type="PackedScene" uid="uid://0e4fv5yx6b1q" path="res://Common/ObjectivePackage.tscn" id="5_73fy0"]
+[ext_resource type="PackedScene" uid="uid://c0x3d8fkai3af" path="res://Common/ObjectiveRecepticle.tscn" id="6_46iu5"]
+[ext_resource type="Texture2D" uid="uid://bhxauakacm67i" path="res://textures/6096-normal.jpg" id="7_2nlwh"]
+[ext_resource type="Texture2D" uid="uid://bvnf20i6qcgsl" path="res://SL-072622-51930-14.jpg" id="8_oqpsm"]
+[ext_resource type="Texture2D" uid="uid://cpfwb43li2krr" path="res://textures/bin ignas.png" id="9_xvxm7"]
+[ext_resource type="Script" uid="uid://di68kstndq27g" path="res://Scripts/spinner.gd" id="10_vf1fs"]
+[ext_resource type="Texture2D" uid="uid://dqbhu24liaxki" path="res://textures/kanibalas.png" id="11_h023u"]
+[ext_resource type="Script" uid="uid://cj0ixxrl55hl1" path="res://Scripts/turbo rotater.gd" id="12_d2st6"]
+[ext_resource type="PackedScene" uid="uid://b68esa8mek3nj" path="res://Meshes/4 sided pyramid.glb" id="13_ktvr2"]
+[ext_resource type="Texture2D" uid="uid://2eic6itbc7oq" path="res://textures/polish pyramid.png" id="14_lb02c"]
+[ext_resource type="Texture2D" uid="uid://braspgjew4oe7" path="res://textures/gyat.jpg" id="15_vcldi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_57qb2"]
 border_width_left = 5
@@ -48,23 +48,23 @@ metallic_specular = 0.1
 roughness = 0.91
 normal_enabled = true
 normal_scale = -0.42
-normal_texture = ExtResource("1_p84jh")
+normal_texture = ExtResource("7_2nlwh")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gtvy4"]
-albedo_texture = ExtResource("4_na4y3")
+albedo_texture = ExtResource("8_oqpsm")
 
 [sub_resource type="PrismMesh" id="PrismMesh_na4y3"]
 left_to_right = 1.0
 size = Vector3(21.29, 14.5, 12)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_na4y3"]
-albedo_texture = ExtResource("4_na4y3")
+albedo_texture = ExtResource("8_oqpsm")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sko3c"]
-albedo_texture = ExtResource("4_na4y3")
+albedo_texture = ExtResource("8_oqpsm")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qva1w"]
-albedo_texture = ExtResource("7_sko3c")
+albedo_texture = ExtResource("9_xvxm7")
 
 [sub_resource type="SphereMesh" id="SphereMesh_57qb2"]
 material = SubResource("StandardMaterial3D_qva1w")
@@ -72,23 +72,23 @@ radius = 1.0
 height = 2.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_muogi"]
-albedo_texture = ExtResource("10_uytli")
+albedo_texture = ExtResource("11_h023u")
 
 [sub_resource type="BoxMesh" id="BoxMesh_awt07"]
 material = SubResource("StandardMaterial3D_muogi")
 size = Vector3(1.5, 1.5, 1.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_awt07"]
-albedo_texture = ExtResource("13_7aikp")
+albedo_texture = ExtResource("14_lb02c")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_57qb2"]
-albedo_texture = ExtResource("4_na4y3")
+albedo_texture = ExtResource("8_oqpsm")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vl4cn"]
-albedo_texture = ExtResource("4_na4y3")
+albedo_texture = ExtResource("8_oqpsm")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uytli"]
-albedo_texture = ExtResource("4_na4y3")
+albedo_texture = ExtResource("8_oqpsm")
 
 [sub_resource type="PrismMesh" id="PrismMesh_sko3c"]
 left_to_right = 1.0
@@ -99,13 +99,13 @@ left_to_right = 1.0
 size = Vector3(2.125, 1.485, 10.9)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_js2t8"]
-albedo_texture = ExtResource("4_na4y3")
+albedo_texture = ExtResource("8_oqpsm")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2kv0r"]
-albedo_texture = ExtResource("9_qva1w")
+albedo_texture = ExtResource("15_vcldi")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r8k3y"]
-albedo_texture = ExtResource("4_na4y3")
+albedo_texture = ExtResource("8_oqpsm")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_758qj"]
 
@@ -118,7 +118,7 @@ bottom_radius = 0.2
 height = 41.411
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7aikp"]
-albedo_texture = ExtResource("4_na4y3")
+albedo_texture = ExtResource("8_oqpsm")
 
 [node name="Map1" type="Node3D" unique_id=1327783775]
 
@@ -147,12 +147,15 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 104.
 cull_mask = 1048571
 fov = 70.0
 
-[node name="CharacterBody3D" parent="." unique_id=343018854 instance=ExtResource("1_ibjaa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 28.463352, 0)
+[node name="CharacterBody3D" parent="." unique_id=343018854 instance=ExtResource("1_yftjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.9651012, 0)
 
-[node name="PackageMasterControler" parent="." unique_id=1748207165 node_paths=PackedStringArray("sourceNodesRoot", "destinationNodesRoot") instance=ExtResource("2_cf5bg")]
+[node name="PackageMasterControler" parent="." unique_id=1748207165 node_paths=PackedStringArray("sourceNodesRoot", "destinationNodesRoot") instance=ExtResource("2_nadvc")]
 sourceNodesRoot = NodePath("../Sources")
 destinationNodesRoot = NodePath("../Destinations")
+isCompetitive = true
+startingTime = 90.0
+timePerMeter = 0.15
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=845544594]
 environment = SubResource("Environment_cf5bg")
@@ -162,7 +165,7 @@ camera_attributes = SubResource("CameraAttributesPhysical_flm4b")
 quality = 3
 directional = true
 texel_scale = 0.5
-light_data = ExtResource("3_57qb2")
+light_data = ExtResource("3_6jr4i")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=148986647]
 transform = Transform3D(-0.6000403, -0.7997928, -0.016825015, 0.44226116, -0.34918296, 0.8261213, -0.6666009, 0.488265, 0.5632412, 0, 32, -15)
@@ -172,61 +175,61 @@ light_bake_mode = 1
 shadow_enabled = true
 directional_shadow_max_distance = 800.0
 
-[node name="BoundingBox" parent="." unique_id=511479372 instance=ExtResource("11_vl4cn")]
+[node name="BoundingBox" parent="." unique_id=511479372 instance=ExtResource("4_bv2pf")]
 
 [node name="Sources" type="Node3D" parent="." unique_id=2013365557]
 
-[node name="ObjectivePackage" parent="Sources" unique_id=2041749406 instance=ExtResource("4_bwbs4")]
+[node name="ObjectivePackage" parent="Sources" unique_id=2041749406 instance=ExtResource("5_73fy0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.328415, 37.83367, -24.303835)
 
-[node name="ObjectivePackage2" parent="Sources" unique_id=1900027339 instance=ExtResource("4_bwbs4")]
+[node name="ObjectivePackage2" parent="Sources" unique_id=1900027339 instance=ExtResource("5_73fy0")]
 transform = Transform3D(0.9746305, 0.22081108, -0.036577288, -0.19757538, 0.9255664, 0.322941, 0.105163686, -0.3075214, 0.9457118, 34.447395, 71.85434, 89.4312)
 
-[node name="ObjectivePackage3" parent="Sources" unique_id=190804033 instance=ExtResource("4_bwbs4")]
+[node name="ObjectivePackage3" parent="Sources" unique_id=190804033 instance=ExtResource("5_73fy0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.30957, 25.803852, 39.58387)
 
-[node name="ObjectivePackage4" parent="Sources" unique_id=1121352933 instance=ExtResource("4_bwbs4")]
+[node name="ObjectivePackage4" parent="Sources" unique_id=1121352933 instance=ExtResource("5_73fy0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 339.56372, 31.196243, 134.9248)
 
-[node name="ObjectivePackage5" parent="Sources" unique_id=160555517 instance=ExtResource("4_bwbs4")]
+[node name="ObjectivePackage5" parent="Sources" unique_id=160555517 instance=ExtResource("5_73fy0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 291.64392, 17.817934, 411.5641)
 
-[node name="ObjectivePackage6" parent="Sources" unique_id=91443049 instance=ExtResource("4_bwbs4")]
+[node name="ObjectivePackage6" parent="Sources" unique_id=91443049 instance=ExtResource("5_73fy0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.05326, 23.812626, 351.92468)
 
-[node name="ObjectivePackage7" parent="Sources" unique_id=951523399 instance=ExtResource("4_bwbs4")]
+[node name="ObjectivePackage7" parent="Sources" unique_id=951523399 instance=ExtResource("5_73fy0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -216.25221, 25.585964, 97.3804)
 
-[node name="ObjectivePackage8" parent="Sources" unique_id=546127561 instance=ExtResource("4_bwbs4")]
+[node name="ObjectivePackage8" parent="Sources" unique_id=546127561 instance=ExtResource("5_73fy0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9825077, 49.57813, 242.88402)
 
 [node name="Destinations" type="Node3D" parent="." unique_id=26952223]
 
-[node name="ObjectiveRecepticle" parent="Destinations" unique_id=2035276712 instance=ExtResource("5_na4y3")]
+[node name="ObjectiveRecepticle" parent="Destinations" unique_id=2035276712 instance=ExtResource("6_46iu5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.39904, 28.893908, 23.498978)
 
-[node name="ObjectiveRecepticle2" parent="Destinations" unique_id=1377473781 instance=ExtResource("5_na4y3")]
+[node name="ObjectiveRecepticle2" parent="Destinations" unique_id=1377473781 instance=ExtResource("6_46iu5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -213.76947, 23.810953, 0)
 
-[node name="ObjectiveRecepticle3" parent="Destinations" unique_id=1886793669 instance=ExtResource("5_na4y3")]
+[node name="ObjectiveRecepticle3" parent="Destinations" unique_id=1886793669 instance=ExtResource("6_46iu5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.29571, 0.7142048, 108.11176)
 
-[node name="ObjectiveRecepticle4" parent="Destinations" unique_id=653076204 instance=ExtResource("5_na4y3")]
+[node name="ObjectiveRecepticle4" parent="Destinations" unique_id=653076204 instance=ExtResource("6_46iu5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 204.18925, 0.42632294, 86.74241)
 
-[node name="ObjectiveRecepticle5" parent="Destinations" unique_id=1674165626 instance=ExtResource("5_na4y3")]
+[node name="ObjectiveRecepticle5" parent="Destinations" unique_id=1674165626 instance=ExtResource("6_46iu5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 310.6419, 31.196018, 0)
 
-[node name="ObjectiveRecepticle6" parent="Destinations" unique_id=1288049461 instance=ExtResource("5_na4y3")]
+[node name="ObjectiveRecepticle6" parent="Destinations" unique_id=1288049461 instance=ExtResource("6_46iu5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107.401886, 0.5451946, 291.56564)
 
-[node name="ObjectiveRecepticle7" parent="Destinations" unique_id=712263827 instance=ExtResource("5_na4y3")]
+[node name="ObjectiveRecepticle7" parent="Destinations" unique_id=712263827 instance=ExtResource("6_46iu5")]
 transform = Transform3D(0.9885808, 0, 0.15069146, 0, 1, 0, -0.15069146, 0, 0.9885808, 272.51395, 11.961477, 223.76373)
 
-[node name="ObjectiveRecepticle8" parent="Destinations" unique_id=386861969 instance=ExtResource("5_na4y3")]
+[node name="ObjectiveRecepticle8" parent="Destinations" unique_id=386861969 instance=ExtResource("6_46iu5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 386.4417, 18.58932, 242.64415)
 
-[node name="ObjectiveRecepticle9" parent="Destinations" unique_id=1482494810 instance=ExtResource("5_na4y3")]
+[node name="ObjectiveRecepticle9" parent="Destinations" unique_id=1482494810 instance=ExtResource("6_46iu5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.84514, 16.828241, 396.60468)
 
 [node name="Ground1" type="CSGCombiner3D" parent="." unique_id=193782346]
@@ -394,19 +397,19 @@ height = 26.203613
 [node name="Armeneian ignas" type="MeshInstance3D" parent="Slenis" unique_id=776149917]
 transform = Transform3D(-0.99847144, 0.040692713, 0.03739342, 0.044195034, 0.99418706, 0.09818136, -0.033180654, 0.09968421, -0.9944657, 36.76538, 199.03029, -79.07746)
 mesh = SubResource("SphereMesh_57qb2")
-script = ExtResource("8_sko3c")
+script = ExtResource("10_vf1fs")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Slenis" unique_id=26068964]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.614975, 198.95023, -79.479744)
 mesh = SubResource("BoxMesh_awt07")
-script = ExtResource("11_2kv0r")
+script = ExtResource("12_d2st6")
 
-[node name="4 sided pyramid" parent="Slenis" unique_id=2035333226 instance=ExtResource("12_r8k3y")]
+[node name="4 sided pyramid" parent="Slenis" unique_id=2035333226 instance=ExtResource("13_ktvr2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.83493, 199.3208, -79.45764)
 
 [node name="Cube" parent="Slenis/4 sided pyramid" index="0" unique_id=927921793]
 material_override = SubResource("StandardMaterial3D_awt07")
-script = ExtResource("11_2kv0r")
+script = ExtResource("12_d2st6")
 
 [node name="Elektronika" type="CSGCombiner3D" parent="." unique_id=1670640675]
 transform = Transform3D(0.954256, 0, 0.29899085, 0, 1, 0, -0.29899085, 0, 0.954256, 241.41162, 0, 349.6631)

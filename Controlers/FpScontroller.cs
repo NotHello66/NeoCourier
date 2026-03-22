@@ -66,6 +66,10 @@ public partial class FpScontroller : CharacterBody3D
 	private RayCast3D _grappleRay;
 	MeshInstance3D _grappleRope;
 	ImmediateMesh _grappleMesh;
+	float ropeInitialLength;
+
+    [Export] float slamSpeedMultiplier = 3f;
+	bool isSlamming = false;
 
 	Vector3 lastPosition;
 
@@ -133,6 +137,7 @@ public partial class FpScontroller : CharacterBody3D
 		_grappleMesh = new ImmediateMesh();
 		_grappleRope = new MeshInstance3D();
 		_grappleRope.Mesh = _grappleMesh;
+		_grappleRope.Layers = 4;
 		var mat = new StandardMaterial3D();
 		mat.ShadingMode = BaseMaterial3D.ShadingModeEnum.Unshaded;
 		mat.AlbedoColor = Colors.White;
@@ -164,6 +169,10 @@ public partial class FpScontroller : CharacterBody3D
 				cam.Rotation = rot;
 
 			}
+		}
+		if (@event.IsActionPressed("slam"))
+		{
+			isSlamming = true;
 		}
 		//if (@event is InputEventMouseButton)
 		//{
@@ -254,8 +263,14 @@ public partial class FpScontroller : CharacterBody3D
 	{
 
 		Vector3 v = Velocity;
-		v.Y -= (float)ProjectSettings.GetSetting("physics/3d/default_gravity") * (float)delta;
-		Velocity = v;
+		if (isSlamming)
+		{
+			v.Y -= (float)ProjectSettings.GetSetting("physics/3d/default_gravity") * (float)delta * slamSpeedMultiplier;
+		}
+		else
+			v.Y -= (float)ProjectSettings.GetSetting("physics/3d/default_gravity") * (float)delta;
+
+        Velocity = v;
 
 		var curSpeedInWishDir = Velocity.Dot(WishedDirection);
 		var cappedSpeed = Mathf.Min((airMoveSpeed * WishedDirection).Length(), airCap);
@@ -311,7 +326,13 @@ public partial class FpScontroller : CharacterBody3D
 	}
 	public override void _PhysicsProcess(double delta)
 	{
-		if (IsOnFloor()) lastFrameWasOnFloor = Engine.GetPhysicsFrames();
+		lastPosition = GlobalPosition;
+		if (IsOnFloor())
+		{
+            lastFrameWasOnFloor = Engine.GetPhysicsFrames();
+			isSlamming = false;
+        }
+			
 		var inputDirection = Input.GetVector("left", "right", "up", "down").Normalized();
 
 		WishedDirection = GlobalTransform.Basis * new Vector3(inputDirection.X, 0f, inputDirection.Y);
@@ -345,7 +366,12 @@ public partial class FpScontroller : CharacterBody3D
 				if (floorNormal != Vector3.Zero && floorNormal != Vector3.Up)
 				{
 					float gravity = (float)ProjectSettings.GetSetting("physics/3d/default_gravity");
-					Vector3 gravVec = new Vector3(0, -gravity, 0);
+
+                    if (isSlamming)
+					{
+						 gravity *= slamSpeedMultiplier;
+					}
+                    Vector3 gravVec = new Vector3(0, -gravity, 0);
 					Vector3 slopeGrav = gravVec - floorNormal * gravVec.Dot(floorNormal);
 
 					v += slopeGrav * (float)delta;
@@ -372,7 +398,15 @@ public partial class FpScontroller : CharacterBody3D
 		else if (Grapple != GrappleState.Idle)
 		{
 			Vector3 v = Velocity;
-			v.Y -= (float)ProjectSettings.GetSetting("physics/3d/default_gravity") * (float)delta;
+			
+			if (isSlamming)
+			{
+                v.Y -= (float)ProjectSettings.GetSetting("physics/3d/default_gravity") * (float)delta * slamSpeedMultiplier;
+            }
+			else
+			{
+				v.Y -= (float)ProjectSettings.GetSetting("physics/3d/default_gravity") * (float)delta;
+            }
 			Velocity = v;
 		}
 		else _HandleAirPhysics(delta);
@@ -517,6 +551,7 @@ public partial class FpScontroller : CharacterBody3D
             if (_grappleRay.IsColliding())
             {
                 _grapplePoint = _grappleRay.GetCollisionPoint();
+				ropeInitialLength = _grapplePoint.DistanceTo(GlobalPosition);
                 Grapple = GrappleState.Pulling;
             }
         }
@@ -525,7 +560,11 @@ public partial class FpScontroller : CharacterBody3D
             Grapple = GrappleState.Idle;
             return;
         }
-
+		if(Grapple != GrappleState.Idle && _grapplePoint.DistanceTo(GlobalPosition) > ropeInitialLength * 1.2)
+		{
+			Grapple = GrappleState.Idle;
+			return;
+		}
         if (Grapple == GrappleState.Pulling)
 		{
 			Vector3 toPoint = _grapplePoint - GlobalPosition;
@@ -563,6 +602,7 @@ public partial class FpScontroller : CharacterBody3D
 			_grappleMesh.SurfaceAddVertex(ropeStart);
 			_grappleMesh.SurfaceSetColor(Colors.White);
 			_grappleMesh.SurfaceAddVertex(_grapplePoint);
+			
 			_grappleMesh.SurfaceEnd();
 		}
 	}

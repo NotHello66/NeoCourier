@@ -59,6 +59,14 @@ default_font_size = 48
 
 [sub_resource type="AudioStreamMP3" id="AudioStreamMP3_sevw1"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a3ekj"]
+albedo_color = Color(0.108646564, 0.50318396, 0.3434878, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_12vh2"]
+material = SubResource("StandardMaterial3D_a3ekj")
+top_radius = 10.0
+bottom_radius = 10.0
+
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=343018854 node_paths=PackedStringArray("WorldModel", "Camera") groups=["Player"]]
 floor_snap_length = 1.0
 script = ExtResource("1_tx4ao")
@@ -73,6 +81,7 @@ staminaregen = 1000.0
 airCap = 0.95
 grappleRange = 50.0
 retractTreshold = 4.0
+slamSpeedMultiplier = 5.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1489119246]
 unique_name_in_owner = true
@@ -84,6 +93,7 @@ unique_name_in_owner = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WorldModel" unique_id=932224863]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0427738, 0)
+layers = 3
 material_override = SubResource("StandardMaterial3D_skscj")
 mesh = SubResource("CapsuleMesh_p3ltg")
 
@@ -139,9 +149,9 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 1.0
-offset_top = -24.0
+offset_top = -280.0
 offset_right = 206.0
-offset_bottom = -1.0
+offset_bottom = -257.0
 grow_vertical = 0
 theme = SubResource("Theme_a3ekj")
 text = "SPEEEEEEEEEEEEEEED"
@@ -316,6 +326,12 @@ volume_db = -15.0
 bus = &"Music"
 script = ExtResource("3_vnsyr")
 exportedTracks = [ExtResource("4_vlbih"), ExtResource("5_e3rli"), ExtResource("6_md0me")]
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=511867144]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.775459, 0)
+layers = 2
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_12vh2")
 
 [connection signal="pressed" from="PauseMenu/MenuButtons/Resume" to="PauseMenu" method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/MenuButtons/Options" to="PauseMenu" method="_on_options_pressed"]

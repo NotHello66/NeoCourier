@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://gg8w48p6x1gx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dcp0k"]
+albedo_color = Color(1, 0.19999999, 0.19999999, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_kabla"]
+top_radius = 10.0
+bottom_radius = 10.0
+height = 0.1
+
+[node name="MinimapMesh" type="MeshInstance3D" unique_id=63293663]
+material_override = SubResource("StandardMaterial3D_dcp0k")
+mesh = SubResource("CylinderMesh_kabla")

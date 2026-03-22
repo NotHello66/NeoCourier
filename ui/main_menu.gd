@@ -12,7 +12,7 @@ func _process(delta: float) -> void:
 
 func _on_play_timed_pressed() -> void:
 	GameData.gameOver = false;
-	get_tree().change_scene_to_file("res://testing scene timed.tscn")
+	get_tree().change_scene_to_file("res://map1_timed.tscn")
 
 
 func _on_play_freeroam_pressed() -> void:

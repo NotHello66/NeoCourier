@@ -14,6 +14,7 @@ var activePackageSource : Node3D = null
 var activePackageDestination: Node3D = null
 var rng = RandomNumberGenerator.new()
 var previousDistanceCovered : int = 0
+@export var minimapMesh : MeshInstance3D = null
 
 func _ready():
 	shrinkingTimer = startingTime;
@@ -31,6 +32,8 @@ func _ready():
 	if isCompetitive:
 		GameData.timer = startingTime
 		GameData.isCompetitive = isCompetitive
+	else:
+		GameData.isCompetitive = false
 		
 func _physics_process(delta):
 	packageActive = GameData.packageActive
@@ -39,6 +42,12 @@ func _physics_process(delta):
 		assignNewPackage()
 	if isCompetitive:
 		GameData.timer -= delta
+	if packageActive and GameData.hasPackage:
+		minimapMesh.global_position = activePackageDestination.global_position
+		minimapMesh.global_position.y += 5
+	if packageActive and !GameData.hasPackage:
+		minimapMesh.global_position = activePackageSource.global_position
+		minimapMesh.global_position.y += 5
 
 func assignNewPackage():
 	var i = rng.randi() % sourceNodes.size()
