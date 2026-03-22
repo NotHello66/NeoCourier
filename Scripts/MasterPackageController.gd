@@ -44,10 +44,10 @@ func _physics_process(delta):
 		GameData.timer -= delta
 	if packageActive and GameData.hasPackage:
 		minimapMesh.global_position = activePackageDestination.global_position
-		minimapMesh.global_position.y += 5
+		minimapMesh.global_position.y += 50
 	if packageActive and !GameData.hasPackage:
 		minimapMesh.global_position = activePackageSource.global_position
-		minimapMesh.global_position.y += 5
+		minimapMesh.global_position.y += 50
 
 func assignNewPackage():
 	var i = rng.randi() % sourceNodes.size()

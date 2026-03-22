@@ -75,8 +75,8 @@ albedo_color = Color(0.108646564, 0.50318396, 0.3434878, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_12vh2"]
 material = SubResource("StandardMaterial3D_a3ekj")
-top_radius = 10.0
-bottom_radius = 10.0
+top_radius = 12.5
+bottom_radius = 12.5
 
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=343018854 node_paths=PackedStringArray("WorldModel", "Camera") groups=["Player"]]
 floor_snap_length = 1.0
@@ -382,7 +382,7 @@ script = ExtResource("3_vnsyr")
 exportedTracks = [ExtResource("4_vlbih"), ExtResource("5_e3rli"), ExtResource("6_md0me"), ExtResource("19_srjb2"), ExtResource("20_vm4ix"), ExtResource("21_tnicc")]
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=511867144]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.775459, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 474.49652, 0)
 layers = 2
 cast_shadow = 0
 mesh = SubResource("CylinderMesh_12vh2")
