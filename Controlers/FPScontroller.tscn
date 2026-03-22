@@ -17,6 +17,10 @@
 [ext_resource type="Script" uid="uid://dcro3jtfove2g" path="res://Controlers/UIDistanceToTarget.gd" id="8_shybt"]
 [ext_resource type="Script" uid="uid://dbxg86skvhyt2" path="res://Controlers/game_over_screen.gd" id="10_6trqh"]
 [ext_resource type="Script" uid="uid://kh5l6l0tkqr2" path="res://Controlers/delivery_count.gd" id="13_a3ekj"]
+[ext_resource type="Script" uid="uid://cm6sf2u8ehj0q" path="res://Controlers/guide_screen.gd" id="14_12vh2"]
+[ext_resource type="AudioStream" uid="uid://di5locgjifahb" path="res://Music/El Huervo - Daisuke.mp3" id="19_srjb2"]
+[ext_resource type="AudioStream" uid="uid://b1earb8sqmmxh" path="res://Music/Paradise_Warfare.mp3" id="20_vm4ix"]
+[ext_resource type="AudioStream" uid="uid://b1pj83ndqmmih" path="res://Music/Scattle - Inner Animal.mp3" id="21_tnicc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_37k52"]
 height = 1.9995117
@@ -56,6 +60,13 @@ default_font_size = 48
 [sub_resource type="Theme" id="Theme_shybt"]
 default_font = ExtResource("7_4812h")
 default_font_size = 48
+
+[sub_resource type="Gradient" id="Gradient_g5hiq"]
+offsets = PackedFloat32Array(0.29568106)
+colors = PackedColorArray(0.29235882, 0.29235882, 0.29235882, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2w3hm"]
+gradient = SubResource("Gradient_g5hiq")
 
 [sub_resource type="AudioStreamMP3" id="AudioStreamMP3_sevw1"]
 
@@ -316,6 +327,49 @@ text = "Restart
 layout_mode = 2
 text = "Quit to menu"
 
+[node name="GuideScreen" type="CanvasLayer" parent="." unique_id=1600927007]
+process_mode = 3
+visible = false
+script = ExtResource("14_12vh2")
+
+[node name="TextureRect" type="TextureRect" parent="GuideScreen" unique_id=504508908]
+modulate = Color(1, 1, 1, 0.654902)
+offset_left = -71.0
+offset_top = -41.0
+offset_right = 1967.0
+offset_bottom = 1135.0
+texture = SubResource("GradientTexture1D_2w3hm")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GuideScreen" unique_id=1359040055]
+offset_left = 59.0
+offset_top = 63.0
+offset_right = 1857.0
+offset_bottom = 1014.0
+theme_override_font_sizes/normal_font_size = 26
+text = "Standard controls:
+
+W,A,S,D – basic directional movement
+Space – jump
+Ctrl – slide, greatly reduces ground friction
+Right Click – Grappling hook, toggle by default, changeable in the settings
+
+Music controls:
+f2 – pauses track
+f3 – skips track
+
+Basic Guide:
+
+The compass points to the objective, either the source or the destination. In the timed mode, the goal is to deliver as many packages as you can under the given time. With every set delivered a decreasing amount of time (depending on the following deliveries distance) will be added.
+
+Strategy:
+
+B-hopping – holding jump allows the player to be in contact with the ground for a lower amount of time, hence not applying as much friction and allowing higher speeds.
+
+Slide hopping – same principles of b-hopping with further reduced friction.
+
+Air-strafing – advanced strategy. Air speed can be increased by abusing the sideways controls allowed mid air to gain unlimited additional speed.
+Press f1 to close this screen"
+
 [node name="AudioListener3D" type="AudioListener3D" parent="." unique_id=1318102035]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5422461, 0)
 
@@ -325,7 +379,7 @@ stream = SubResource("AudioStreamMP3_sevw1")
 volume_db = -15.0
 bus = &"Music"
 script = ExtResource("3_vnsyr")
-exportedTracks = [ExtResource("4_vlbih"), ExtResource("5_e3rli"), ExtResource("6_md0me")]
+exportedTracks = [ExtResource("4_vlbih"), ExtResource("5_e3rli"), ExtResource("6_md0me"), ExtResource("19_srjb2"), ExtResource("20_vm4ix"), ExtResource("21_tnicc")]
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=511867144]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.775459, 0)
