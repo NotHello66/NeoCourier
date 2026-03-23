@@ -11,4 +11,5 @@ func _process(delta: float) -> void:
 	pass
 func _physics_process(delta: float) -> void:
 	if(player.global_position.y < -200):
+		player.velocity = Vector3.ZERO
 		player.global_position = self.global_position

@@ -188,7 +188,7 @@ transform = Transform3D(0.9746305, 0.22081108, -0.036577288, -0.19757538, 0.9255
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.30957, 25.803852, 39.58387)
 
 [node name="ObjectivePackage4" parent="Sources" unique_id=1121352933 instance=ExtResource("4_bwbs4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 339.56372, 31.196243, 134.9248)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 339.56372, 30.257278, 134.9248)
 
 [node name="ObjectivePackage5" parent="Sources" unique_id=160555517 instance=ExtResource("4_bwbs4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 291.64392, 17.817934, 411.5641)
@@ -217,7 +217,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.29571, 0.7142048, 108.111
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 204.18925, 0.42632294, 86.74241)
 
 [node name="ObjectiveRecepticle5" parent="Destinations" unique_id=1674165626 instance=ExtResource("5_na4y3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 310.6419, 31.196018, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 310.6419, 30.098675, 0)
 
 [node name="ObjectiveRecepticle6" parent="Destinations" unique_id=1288049461 instance=ExtResource("5_na4y3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107.401886, 0.5451946, 291.56564)
@@ -265,8 +265,8 @@ transform = Transform3D(0.9117835, 0, 0.41067111, 0, 1, 0, -0.41067111, 0, 0.911
 size = Vector3(100, 34.94928, 6.024)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="Chemija" unique_id=386907810]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224.10284, 14.87672, -24.611057)
-size = Vector3(9.438477, 27.894531, 25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224.10284, 14.509777, -24.611057)
+size = Vector3(9.438477, 28.628418, 25)
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="Chemija" unique_id=2083087252]
 transform = Transform3D(-0.012443868, 0, 0.9999226, 0, 1, 0, -0.9999226, 0, -0.012443868, -216.29901, 14.230217, -33.511898)
@@ -416,7 +416,7 @@ material_override = SubResource("StandardMaterial3D_57qb2")
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Elektronika" unique_id=1458198807]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.21216, 15.961483, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.212135, 15.148266, 0)
 size = Vector3(18, 30, 170)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Elektronika" unique_id=1225683470]
@@ -623,6 +623,7 @@ material_override = SubResource("StandardMaterial3D_js2t8")
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Bardakas2" unique_id=1312476524]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9280472, 0)
 size = Vector3(20, 30, 65)
 
 [node name="Bardakas3" type="CSGCombiner3D" parent="." unique_id=668789102]
@@ -631,7 +632,7 @@ material_override = SubResource("StandardMaterial3D_js2t8")
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Bardakas3" unique_id=1865520208]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4252014, 0, -25.148285)
+transform = Transform3D(0.99999464, 0.0033076971, 3.6656857e-06, -0.003307697, 0.9999921, 0.0022123044, 3.6358833e-06, -0.0022123046, 0.9999976, 2.4251938, -1.1529884, -25.148315)
 size = Vector3(20, 30, 65)
 
 [node name="Bardakas4" type="CSGCombiner3D" parent="." unique_id=888958159]
@@ -640,7 +641,7 @@ material_override = SubResource("StandardMaterial3D_js2t8")
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Bardakas4" unique_id=1162335080]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.563461, 0, -12.803589)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.563477, -1.0923538, -12.803619)
 size = Vector3(20, 30, 65)
 
 [node name="Vaiduoklis" type="CSGCombiner3D" parent="." unique_id=321895412]

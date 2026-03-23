@@ -342,7 +342,7 @@ texture = SubResource("GradientTexture1D_2w3hm")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="GuideScreen" unique_id=1359040055]
 offset_left = 59.0
-offset_top = 63.0
+offset_top = 18.0
 offset_right = 1857.0
 offset_bottom = 1014.0
 theme_override_font_sizes/normal_font_size = 26
@@ -352,6 +352,7 @@ W,A,S,D – basic directional movement
 Space – jump
 Ctrl – slide, greatly reduces ground friction
 Right Click – Grappling hook, toggle by default, changeable in the settings
+C- slam towards the ground
 
 Music controls:
 f2 – pauses track

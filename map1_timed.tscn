@@ -268,8 +268,8 @@ transform = Transform3D(0.9117835, 0, 0.41067111, 0, 1, 0, -0.41067111, 0, 0.911
 size = Vector3(100, 34.94928, 6.024)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="Chemija" unique_id=386907810]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224.10284, 14.87672, -24.611057)
-size = Vector3(9.438477, 27.894531, 25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224.10284, 14.3352165, -24.611057)
+size = Vector3(9.438477, 28.97754, 25)
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="Chemija" unique_id=2083087252]
 transform = Transform3D(-0.012443868, 0, 0.9999226, 0, 1, 0, -0.9999226, 0, -0.012443868, -216.29901, 14.230217, -33.511898)
@@ -626,7 +626,8 @@ material_override = SubResource("StandardMaterial3D_js2t8")
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Bardakas2" unique_id=1312476524]
-size = Vector3(20, 30, 65)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2841797, 0)
+size = Vector3(20, 30.56836, 65)
 
 [node name="Bardakas3" type="CSGCombiner3D" parent="." unique_id=668789102]
 transform = Transform3D(0.55594754, 0, 0.8312174, 0, 1, 0, -0.8312174, 0, 0.55594754, 356.3398, 16.230003, 85.51921)
@@ -634,8 +635,8 @@ material_override = SubResource("StandardMaterial3D_js2t8")
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Bardakas3" unique_id=1865520208]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4252014, 0, -25.148285)
-size = Vector3(20, 30, 65)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4251938, -0.6743164, -25.148315)
+size = Vector3(20, 31.348633, 65)
 
 [node name="Bardakas4" type="CSGCombiner3D" parent="." unique_id=888958159]
 transform = Transform3D(0.55594754, 0, 0.8312174, 0, 1, 0, -0.8312174, 0, 0.55594754, 331.88043, 16.230003, -2.1035194)
@@ -643,8 +644,8 @@ material_override = SubResource("StandardMaterial3D_js2t8")
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Bardakas4" unique_id=1162335080]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.563461, 0, -12.803589)
-size = Vector3(20, 30, 65)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.563492, -0.85839844, -12.80365)
+size = Vector3(20, 31.716797, 65)
 
 [node name="Vaiduoklis" type="CSGCombiner3D" parent="." unique_id=321895412]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.838783, -3.5239391, 0)
