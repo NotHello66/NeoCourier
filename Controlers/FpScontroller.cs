@@ -516,15 +516,34 @@ public partial class FpScontroller : CharacterBody3D
 		}
 
 	}
-	public void _HandleGrapple(double delta)
-	{
+    private bool CanGrapple = false;
+    private Vector3 _potentialGrapplePoint;
+
+    public void _HandleGrapple(double delta)
+    {
         bool grappleHoldMode = gameData.Get("grappleHoldMode").AsBool();
 
         bool grapplePressed = Input.IsActionJustPressed("grapple");
-        bool grappleHeld = Input.IsActionPressed("grapple");
         bool grappleReleased = Input.IsActionJustReleased("grapple");
 
-        bool shouldStartGrapple = grapplePressed; 
+        // --- ALWAYS CHECK GRAPPLE AVAILABILITY ---
+        if (_grappleRay == null || !_grappleRay.IsInsideTree())
+        {
+            _grappleRay = new RayCast3D();
+            _grappleRay.TargetPosition = new Vector3(0, 0, -grappleRange);
+            _grappleRay.CollisionMask = 1;
+            Camera.AddChild(_grappleRay);
+        }
+
+        _grappleRay.ForceRaycastUpdate();
+
+        CanGrapple = _grappleRay.IsColliding();
+		gameData.Set("canGrapple", CanGrapple);
+        if (CanGrapple)
+            _potentialGrapplePoint = _grappleRay.GetCollisionPoint();
+
+        // --- INPUT LOGIC ---
+        bool shouldStartGrapple;
         bool shouldStopGrapple;
 
         if (grappleHoldMode)
@@ -538,75 +557,76 @@ public partial class FpScontroller : CharacterBody3D
             shouldStopGrapple = grapplePressed && Grapple != GrappleState.Idle;
         }
 
-        if (shouldStartGrapple && Grapple == GrappleState.Idle)
+        // --- START GRAPPLE ---
+        if (shouldStartGrapple && Grapple == GrappleState.Idle && CanGrapple)
         {
-            if (_grappleRay == null || !_grappleRay.IsInsideTree())
-            {
-                _grappleRay = new RayCast3D();
-                _grappleRay.TargetPosition = new Vector3(0, 0, -grappleRange);
-                _grappleRay.CollisionMask = 1;
-                Camera.AddChild(_grappleRay);
-            }
-            _grappleRay.ForceRaycastUpdate();
-            if (_grappleRay.IsColliding())
-            {
-                _grapplePoint = _grappleRay.GetCollisionPoint();
-				ropeInitialLength = _grapplePoint.DistanceTo(GlobalPosition);
-                Grapple = GrappleState.Pulling;
-            }
+            _grapplePoint = _potentialGrapplePoint;
+            ropeInitialLength = _grapplePoint.DistanceTo(GlobalPosition);
+            Grapple = GrappleState.Pulling;
         }
         else if (shouldStopGrapple)
         {
             Grapple = GrappleState.Idle;
             return;
         }
-		if(Grapple != GrappleState.Idle && _grapplePoint.DistanceTo(GlobalPosition) > ropeInitialLength * 1.2)
-		{
-			Grapple = GrappleState.Idle;
-			return;
-		}
+
+        // --- ROPE BREAK CHECK ---
+        if (Grapple != GrappleState.Idle &&
+            _grapplePoint.DistanceTo(GlobalPosition) > ropeInitialLength * 1.2f)
+        {
+            Grapple = GrappleState.Idle;
+            return;
+        }
+
+        // --- GRAPPLE STATES ---
         if (Grapple == GrappleState.Pulling)
-		{
-			Vector3 toPoint = _grapplePoint - GlobalPosition;
-			Vector3 v = Velocity;
-			v += toPoint.Normalized() * pullForce * (float)delta;
-			//if (v.Length() > maxGrappleSpeed)
-			//	v = v.Normalized() * maxGrappleSpeed;
-			Velocity = v;
+        {
+            Vector3 toPoint = _grapplePoint - GlobalPosition;
+            Vector3 v = Velocity;
 
-			if (toPoint.Length() < retractTreshold)
-				Grapple = GrappleState.Idle;
-			else if (toPoint.Length() < grappleRange * 0.6f)
-				Grapple = GrappleState.Swinging;
-		}
-		else if (Grapple == GrappleState.Swinging)
-		{
-			Vector3 ropeDir = (_grapplePoint - GlobalPosition).Normalized();
-			Vector3 v = Velocity;
-			float awaySpeed = v.Dot(-ropeDir);
-			if (awaySpeed > 0)
-				v += ropeDir * awaySpeed; // cancel pull-away component
-			v += ropeDir * swingForce * (float)delta;
-			Velocity = v;
+            v += toPoint.Normalized() * pullForce * (float)delta;
+            Velocity = v;
 
-			if ((_grapplePoint - GlobalPosition).Length() < retractTreshold)
-				Grapple = GrappleState.Idle;
-		}
-		_grappleMesh.ClearSurfaces();
-		if (Grapple != GrappleState.Idle)
-		{
-			var cam = GetViewport().GetCamera3D();
-			Vector3 ropeStart = cam.GlobalPosition + cam.GlobalTransform.Basis.X * 0.2f - cam.GlobalTransform.Basis.Y * 0.1f;
-			_grappleMesh.SurfaceBegin(Mesh.PrimitiveType.Lines);
-			_grappleMesh.SurfaceSetColor(Colors.White);
-			_grappleMesh.SurfaceAddVertex(ropeStart);
-			_grappleMesh.SurfaceSetColor(Colors.White);
-			_grappleMesh.SurfaceAddVertex(_grapplePoint);
-			
-			_grappleMesh.SurfaceEnd();
-		}
-	}
-	public override void _Process(double delta)
+            if (toPoint.Length() < retractTreshold)
+                Grapple = GrappleState.Idle;
+            else if (toPoint.Length() < grappleRange * 0.6f)
+                Grapple = GrappleState.Swinging;
+        }
+        else if (Grapple == GrappleState.Swinging)
+        {
+            Vector3 ropeDir = (_grapplePoint - GlobalPosition).Normalized();
+            Vector3 v = Velocity;
+
+            float awaySpeed = v.Dot(-ropeDir);
+            if (awaySpeed > 0)
+                v += ropeDir * awaySpeed;
+
+            v += ropeDir * swingForce * (float)delta;
+            Velocity = v;
+
+            if ((_grapplePoint - GlobalPosition).Length() < retractTreshold)
+                Grapple = GrappleState.Idle;
+        }
+
+        // --- RENDER ROPE ---
+        _grappleMesh.ClearSurfaces();
+
+        if (Grapple != GrappleState.Idle)
+        {
+            var cam = GetViewport().GetCamera3D();
+
+            Vector3 ropeStart = cam.GlobalPosition
+                + cam.GlobalTransform.Basis.X * 0.2f
+                - cam.GlobalTransform.Basis.Y * 0.1f;
+
+            _grappleMesh.SurfaceBegin(Mesh.PrimitiveType.Lines);
+            _grappleMesh.SurfaceSetColor(Colors.White);
+            _grappleMesh.SurfaceAddVertex(ropeStart);
+            _grappleMesh.SurfaceAddVertex(_grapplePoint);
+            _grappleMesh.SurfaceEnd();
+        }
+    }
+    public override void _Process(double delta)
 	{
 		if (gameData.Get("gameOver").AsBool())
 		{

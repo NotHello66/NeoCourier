@@ -7,9 +7,9 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if(player.global_position.y < -200):
 		player.velocity = Vector3.ZERO
 		player.global_position = self.global_position
