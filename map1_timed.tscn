@@ -120,6 +120,38 @@ height = 41.411
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7aikp"]
 albedo_texture = ExtResource("8_oqpsm")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yftjm"]
+albedo_texture = ExtResource("8_oqpsm")
+
+[sub_resource type="PrismMesh" id="PrismMesh_nadvc"]
+left_to_right = 1.0
+size = Vector3(19.57, 1.7, 40.315)
+
+[sub_resource type="PrismMesh" id="PrismMesh_6jr4i"]
+size = Vector3(15, 1, 30)
+
+[sub_resource type="PrismMesh" id="PrismMesh_bv2pf"]
+size = Vector3(22.5, 2, 26.29)
+
+[sub_resource type="PrismMesh" id="PrismMesh_73fy0"]
+left_to_right = 1.0
+size = Vector3(5.805, 1.02, 33.62)
+
+[sub_resource type="PrismMesh" id="PrismMesh_46iu5"]
+left_to_right = 1.0
+size = Vector3(5.805, 1.02, 20)
+
+[sub_resource type="PrismMesh" id="PrismMesh_2nlwh"]
+left_to_right = 1.0
+size = Vector3(17.095, 1, 26.782)
+
+[sub_resource type="PrismMesh" id="PrismMesh_oqpsm"]
+size = Vector3(11, 0.5, 8.375)
+
+[sub_resource type="PrismMesh" id="PrismMesh_xvxm7"]
+left_to_right = 0.8
+size = Vector3(3.815, 1, 7.995)
+
 [node name="Map1" type="Node3D" unique_id=1327783775]
 
 [node name="Minimap" type="CanvasLayer" parent="." unique_id=496762060]
@@ -188,7 +220,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.328415, 37.83367, -24.303
 transform = Transform3D(0.9746305, 0.22081108, -0.036577288, -0.19757538, 0.9255664, 0.322941, 0.105163686, -0.3075214, 0.9457118, 34.447395, 71.85434, 89.4312)
 
 [node name="ObjectivePackage3" parent="Sources" unique_id=190804033 instance=ExtResource("5_73fy0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.30957, 25.803852, 39.58387)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.30957, 25.894348, 39.58387)
 
 [node name="ObjectivePackage4" parent="Sources" unique_id=1121352933 instance=ExtResource("5_73fy0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 339.56372, 31.196243, 134.9248)
@@ -205,6 +237,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -216.25221, 25.585964, 97.380
 [node name="ObjectivePackage8" parent="Sources" unique_id=546127561 instance=ExtResource("5_73fy0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9825077, 49.57813, 242.88402)
 
+[node name="ObjectivePackage9" parent="Sources" unique_id=245831310 instance=ExtResource("5_73fy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -145.60834, 0.50066614, 221.14711)
+
 [node name="Destinations" type="Node3D" parent="." unique_id=26952223]
 
 [node name="ObjectiveRecepticle" parent="Destinations" unique_id=2035276712 instance=ExtResource("6_46iu5")]
@@ -214,7 +249,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.39904, 28.893908, 23.49897
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -213.76947, 23.810953, 0)
 
 [node name="ObjectiveRecepticle3" parent="Destinations" unique_id=1886793669 instance=ExtResource("6_46iu5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.29571, 0.7142048, 108.11176)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.29571, 0.47440612, 108.11176)
 
 [node name="ObjectiveRecepticle4" parent="Destinations" unique_id=653076204 instance=ExtResource("6_46iu5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 204.18925, 0.42632294, 86.74241)
@@ -233,6 +268,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 386.4417, 18.58932, 242.64415
 
 [node name="ObjectiveRecepticle9" parent="Destinations" unique_id=1482494810 instance=ExtResource("6_46iu5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.84514, 16.828241, 396.60468)
+
+[node name="ObjectiveRecepticle10" parent="Destinations" unique_id=35953250 instance=ExtResource("6_46iu5")]
+transform = Transform3D(0.99953216, -0.022080978, 0.021163795, 0.023953471, 0.9954022, -0.09274372, -0.0190186, 0.0932072, 0.9954652, -112.21384, 17.031425, 189.29358)
 
 [node name="Ground1" type="CSGCombiner3D" parent="." unique_id=193782346]
 material_override = SubResource("StandardMaterial3D_bwbs4")
@@ -811,5 +849,122 @@ size = Vector3(101.647, 1, 900)
 [node name="CSGBox3D8" type="CSGBox3D" parent="Borders" unique_id=40265903]
 transform = Transform3D(-1.4486839e-08, -4.1240963e-08, 1, -0.94348323, 0.33142024, 0, -0.33142024, -0.94348323, -4.371139e-08, 99.86949, 104.59805, 582.99066)
 size = Vector3(101.647, 1, 920.05664)
+
+[node name="Tunelis" type="CSGCombiner3D" parent="." unique_id=692598913]
+transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, -150, -0.563, 230)
+material_override = SubResource("StandardMaterial3D_yftjm")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Tunelis" unique_id=1732647339]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.61499, 0.34008026, -10.577881)
+size = Vector3(138.22998, 1, 121.15576)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Tunelis" unique_id=2026259545]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.790215, 12.926603, 25.592453)
+size = Vector3(20, 25, 30)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Tunelis" unique_id=644828680]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.132378, 12.926603, 5.6502075)
+size = Vector3(15.315674, 25, 10)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Tunelis" unique_id=1053387563]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.020515, 14.968107, 22.30803)
+size = Vector3(11.748566, 29.083008, 43.447754)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Tunelis" unique_id=1625104591]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.90558, 9.032288, -11.898163)
+size = Vector3(16, 19.064575, 40)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Tunelis" unique_id=961317655]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.32895, 12.781519, 5.351059)
+size = Vector3(15, 5.5838623, 5.4228516)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Tunelis" unique_id=606135347]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.97828, 9.032288, -37.001526)
+size = Vector3(14, 19.065, 10)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Tunelis" unique_id=1801624381]
+transform = Transform3D(1.0000007, 0, 0, 0, 1, 0, 0, 0, 1.0000007, 52.426723, 9.675072, -51.609375)
+size = Vector3(9.022217, 18.089722, 20)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Tunelis" unique_id=2006736939]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.538506, 8.851241, -51.67299)
+size = Vector3(40, 16.442339, 19.87561)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Tunelis" unique_id=1177747249]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 28.709145, 17.885807, -51.799026)
+mesh = SubResource("PrismMesh_nadvc")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Tunelis" unique_id=816604191]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0056152, 4.9296875, -59.061768)
+size = Vector3(30, 10.859375, 15)
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="Tunelis" unique_id=2100715029]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.9967957, 10.87196, -59.07141)
+mesh = SubResource("PrismMesh_6jr4i")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="Tunelis" unique_id=293172754]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.012756, 3.2684774, -50.083817)
+size = Vector3(40, 5.522339, 4)
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="Tunelis" unique_id=767174340]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.876495, 9.148703, -34.362625)
+size = Vector3(30.162231, 16.877869, 45)
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="Tunelis" unique_id=2133987205]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.78984, 10.96073, -34.362625)
+size = Vector3(7.5112915, 20.501923, 45)
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="Tunelis" unique_id=698133416]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -50.68904, 4.4750843, -10.047363)
+size = Vector3(7.5112915, 7.530632, 39.268555)
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="Tunelis" unique_id=1936641702]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -66.37926, 4.4750843, -19.967194)
+size = Vector3(7.815338, 7.530632, 12.594238)
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="Tunelis" unique_id=1564053859]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -51.787445, 18.581112, -23.129303)
+mesh = SubResource("PrismMesh_bv2pf")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="Tunelis" unique_id=1509873861]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -51.787445, 18.581112, -45.5755)
+mesh = SubResource("PrismMesh_bv2pf")
+
+[node name="CSGMesh3D5" type="CSGMesh3D" parent="Tunelis" unique_id=578833287]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -47.870346, 8.741829, -9.24025)
+mesh = SubResource("PrismMesh_73fy0")
+
+[node name="CSGMesh3D6" type="CSGMesh3D" parent="Tunelis" unique_id=1038372909]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.400894, 8.741829, -16.278458)
+mesh = SubResource("PrismMesh_46iu5")
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="Tunelis" unique_id=1206898646]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.4422, 4.587555, -10.887665)
+size = Vector3(0.9638672, 10.17511, 9.056152)
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="Tunelis" unique_id=461803513]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, -36.674133, 3.1395187, 19.490875)
+size = Vector3(26.782104, 5, 14)
+
+[node name="CSGMesh3D7" type="CSGMesh3D" parent="Tunelis" unique_id=1492303555]
+transform = Transform3D(0.49999997, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, 0.49999997, -37.467407, 6.12142, 20.86058)
+mesh = SubResource("PrismMesh_2nlwh")
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="Tunelis" unique_id=65308660]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, -19.94313, 2.6645508, 21.701584)
+size = Vector3(10.542236, 6.3291016, 5.6818237)
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="Tunelis" unique_id=2032967996]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, -16.067062, 3.8581696, 33.729584)
+size = Vector3(23.281372, 8.716339, 11.01123)
+
+[node name="CSGMesh3D8" type="CSGMesh3D" parent="Tunelis" unique_id=1001073630]
+transform = Transform3D(0.49999997, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, 0.49999997, -9.634125, 8.470598, 37.45111)
+mesh = SubResource("PrismMesh_oqpsm")
+
+[node name="CSGMesh3D9" type="CSGMesh3D" parent="Tunelis" unique_id=539348569]
+transform = Transform3D(-0.11691354, 0, 0.99314284, 0, 1, 0, -0.99314284, 0, -0.11691354, -7.9246216, 1.5315533, -8.928818)
+mesh = SubResource("PrismMesh_xvxm7")
 
 [editable path="Slenis/4 sided pyramid"]

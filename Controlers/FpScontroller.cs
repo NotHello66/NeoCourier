@@ -388,13 +388,22 @@ public partial class FpScontroller : CharacterBody3D
                 Velocity = Velocity.Slide(GetFloorNormal());
             }
             if (!isStunned && Input.IsActionJustPressed("jump") || AutoBhop == true && Input.IsActionPressed("jump") && !isStunned)
-			{
-				Vector3 v = Velocity;
-				v.Y += JumpVelocity;
-				Velocity = v;
-			}
+            {
+                Vector3 v = Velocity;
+                Vector3 floorNormal = GetFloorNormal();
+                //sokant nuo slopu pridetu greicio atsizvelgiant i grindu normale
+                if (floorNormal != Vector3.Zero && floorNormal != Vector3.Up)
+                {
+                    v += floorNormal * JumpVelocity;
+                }
+                else
+                {
+                    v.Y += JumpVelocity;
+                }
+                Velocity = v;
+            }
 
-		}
+        }
 		else if (Grapple != GrappleState.Idle)
 		{
 			Vector3 v = Velocity;
