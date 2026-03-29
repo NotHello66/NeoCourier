@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cc82bmavlfrvw"]
+
+[ext_resource type="Texture2D" uid="uid://bhxauakacm67i" path="res://textures/6096-normal.jpg" id="1_mdaqv"]
+
+[resource]
+albedo_color = Color(0.37633514, 0.37633514, 0.37633514, 1)
+metallic_specular = 0.1
+roughness = 0.91
+normal_enabled = true
+normal_scale = -0.42
+normal_texture = ExtResource("1_mdaqv")

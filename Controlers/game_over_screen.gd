@@ -11,7 +11,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
-	if  GameData.timer <= 0:
+	if  GameData.timer <= 0  and GameData.isCompetitive == true:
 		GameData.gameOver = true;
 		$Background.visible = true
 		$CenterContainer.visible = true
@@ -23,7 +23,7 @@ func _physics_process(delta: float) -> void:
 func _on_restart_pressed() -> void:
 	get_tree().paused = false;
 	GameData.gameOver = false;
-	get_tree().change_scene_to_file("res://map1_timed.tscn")
+	get_tree().change_scene_to_file("res://map1.tscn")
 	
 
 func _on_quit_pressed() -> void:

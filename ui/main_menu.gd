@@ -12,12 +12,14 @@ func _process(delta: float) -> void:
 
 func _on_play_timed_pressed() -> void:
 	GameData.gameOver = false;
-	get_tree().change_scene_to_file("res://map1_timed.tscn")
+	get_tree().change_scene_to_file("res://map1.tscn")
+	GameData.isCompetitive = true;
 
 
 func _on_play_freeroam_pressed() -> void:
 	GameData.gameOver = false;
 	get_tree().change_scene_to_file("res://map1.tscn")
+	GameData.isCompetitive = false;
 
 
 func _on_options_pressed() -> void:

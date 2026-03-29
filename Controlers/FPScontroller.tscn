@@ -107,11 +107,13 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0427738, 0)
 layers = 3
 material_override = SubResource("StandardMaterial3D_skscj")
+gi_mode = 2
 mesh = SubResource("CapsuleMesh_p3ltg")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="WorldModel" unique_id=1339256376]
 transform = Transform3D(0.45485407, 0, 0, 0, 0.16520017, 0, 0, 0, 0.20297767, 0, 1.5843469, -0.5135068)
 material_override = SubResource("StandardMaterial3D_p3ltg")
+gi_mode = 2
 mesh = SubResource("BoxMesh_skscj")
 
 [node name="HeadOg" type="Node3D" parent="." unique_id=923951692]

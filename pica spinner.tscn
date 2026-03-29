@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://dlx65608c08nc"]
+
+[ext_resource type="Script" uid="uid://5dyxvtcj0kpg" path="res://Scripts/ObjectivePackage.cs" id="1_bmoiv"]
+[ext_resource type="PackedScene" uid="uid://bcjxffprujt5g" path="res://Meshes/pica box.glb" id="2_bfk0j"]
+[ext_resource type="PackedScene" uid="uid://7bx78fqax7r2" path="res://Components/PackageComponent.tscn" id="3_i8akm"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dfonu"]
+sky_top_color = Color(0.45933, 0.2623, 0.61, 1)
+sky_horizon_color = Color(0.46, 0.29256, 0.101200014, 1)
+sky_curve = 0.40981245
+sky_energy_multiplier = 1.1
+ground_bottom_color = Color(0.25197557, 0.14754838, 0.02569193, 1)
+ground_horizon_color = Color(0.3065155, 0.103461154, 0.025350178, 1)
+
+[sub_resource type="Sky" id="Sky_tdfdt"]
+sky_material = SubResource("ProceduralSkyMaterial_dfonu")
+
+[sub_resource type="Environment" id="Environment_bmoiv"]
+background_mode = 2
+background_color = Color(0.7764706, 0.7176471, 0.67058825, 1)
+background_energy_multiplier = 1.2
+sky = SubResource("Sky_tdfdt")
+ambient_light_color = Color(0.6, 0.6, 0.6, 1)
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_bfk0j"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_egxlk"]
+size = Vector3(3, 0.15, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dg3e5"]
+albedo_color = Color(0.27, 0.26298, 0.2592, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mcngj"]
+size = Vector3(2.993042, 0.107177734, 2.9952393)
+
+[node name="Node3D" type="Node3D" unique_id=375160587]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1697407774]
+environment = SubResource("Environment_bmoiv")
+camera_attributes = SubResource("CameraAttributesPhysical_bfk0j")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1186572004]
+transform = Transform3D(-0.6000403, -0.7997928, -0.016825015, 0.44226116, -0.34918296, 0.8261213, -0.6666009, 0.488265, 0.5632412, 0, 32, -15)
+light_color = Color(0.94, 0.5937666, 0.32900003, 1)
+light_energy = 1.2
+light_bake_mode = 1
+shadow_enabled = true
+directional_shadow_max_distance = 800.0
+
+[node name="ObjectivePackage" type="Node3D" parent="." unique_id=2041749406 node_paths=PackedStringArray("objective")]
+script = ExtResource("1_bmoiv")
+objective = NodePath("Base/pica box")
+BobbingAmount = 0.25
+
+[node name="Base" type="StaticBody3D" parent="ObjectivePackage" unique_id=1267917480]
+
+[node name="BaseMesh" type="MeshInstance3D" parent="ObjectivePackage/Base" unique_id=448571680]
+mesh = SubResource("BoxMesh_egxlk")
+surface_material_override/0 = SubResource("StandardMaterial3D_dg3e5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ObjectivePackage/Base" unique_id=1217306071]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.005432129, 0.020874023, -0.0006713867)
+shape = SubResource("BoxShape3D_mcngj")
+
+[node name="pica box" parent="ObjectivePackage/Base" unique_id=1100791251 instance=ExtResource("2_bfk0j")]
+unique_name_in_owner = true
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.3195896, 0)
+
+[node name="PackageComponent" parent="ObjectivePackage" unique_id=379957539 node_paths=PackedStringArray("objective") instance=ExtResource("3_i8akm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1901893, 0)
+hasPackage = true
+objective = NodePath("../Base/pica box")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=581275730]
+transform = Transform3D(0.70716, -0.2640929, 0.65588087, 0.0040018833, 0.92910546, 0.3697931, -0.7070423, -0.25887814, 0.6580831, 3.070702, 2.2587206, 2.996083)
+fov = 45.3

@@ -4,7 +4,7 @@ var sourceNodes: Array = []
 var destinationNodes: Array = []
 @export var sourceNodesRoot: Node3D
 @export var destinationNodesRoot: Node3D
-@export var isCompetitive : bool = false
+var isCompetitive : bool = false
 @export var startingTime :float = 200
 @export var timeShrink: float = 0.9
 @export var timePerMeter :float = 0.12
@@ -18,8 +18,9 @@ var previousDistanceCovered : int = 0
 
 func _ready():
 	shrinkingTimer = startingTime;
-	if isCompetitive:
-		GameData.isCompetitive = true;
+	isCompetitive = GameData.isCompetitive
+	#if isCompetitive:
+	#	GameData.isCompetitive = true;
 	for node in sourceNodesRoot.get_children():
 		var component = node.get_node("PackageComponent")
 		sourceNodes.append(component)
@@ -29,12 +30,9 @@ func _ready():
 	
 	if not packageActive:
 		assignNewPackage()
-	if isCompetitive:
-		GameData.timer = startingTime
-		GameData.isCompetitive = isCompetitive
-	else:
-		GameData.isCompetitive = false
-		
+
+	GameData.timer = startingTime
+	GameData.isCompetitive = isCompetitive
 func _physics_process(delta):
 	packageActive = GameData.packageActive
 	if not packageActive:
@@ -64,3 +62,10 @@ func assignNewPackage():
 	timeShrink *= 0.9
 	GameData.timer += shrinkingTimer
 	print("Source: " + activePackageSource.get_parent().name + "; Destination: " + activePackageDestination.name)
+	
+func _input(event: InputEvent):
+	print("input received: ", event)
+	if Input.is_action_just_pressed("debug_reduceTimer"):
+		print("reducing timer")
+		GameData.timer -= 60
+	
